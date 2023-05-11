@@ -19,7 +19,6 @@ def create_file_summaries(directory):
     with open('file_summaries.json', 'w') as json_file:
         json.dump(file_summaries, json_file, indent=4)
 
-# Find relevant information
 def find_relevant_info(user_prompt):
     """Find and return relevant info from files based on user prompt."""
     relevant_info = {}
@@ -28,14 +27,13 @@ def find_relevant_info(user_prompt):
     with open('file_summaries.json', 'r') as json_file:
         file_summaries = json.load(json_file)
 
-    # Loop through each file
+    # Loop through each file summary
     for file_path, summary in file_summaries.items():
-        # Fetch the full file content
-        with open(file_path, 'r') as file:
-            content = file.read()
-
-        # Check if the user prompt is in the file content
-        if user_prompt in content:
+        # Check if the user prompt is in the file summary
+        if user_prompt in summary:
+            # Fetch the full file content
+            with open(file_path, 'r') as file:
+                content = file.read()
             relevant_info[file_path] = content
 
     return relevant_info
