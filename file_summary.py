@@ -42,6 +42,9 @@ def summarize_file(file_path, summary_length=100):
       }
     }
     '''
+
+    json_response = json.loads(json_response)
+
     #summary = openai.Completion.create(
     #  model="text-davinci-003",
     #  prompt=prompt,
@@ -56,9 +59,9 @@ def summarize_file(file_path, summary_length=100):
     print("summary gpt response of '{}'".format(file_path))
     print("")
     print("")
-    print(summary)
+    print(json_response)
 
-    summary = summary['choices'][0]['text']
+    summary = json_response['choices'][0]['text']
 
     # Get the generated summary
     print("")
