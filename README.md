@@ -50,6 +50,10 @@ Be sure to replace `/path/to/your/files` with the path to the directory that con
 
 Once you've started the Docker container, the application will ask you to enter a search term. After you've entered a term, the application will print a response with the paths of the files that contain the term. If no files contain the term, the application will inform you that no relevant files were found.
 
+## Features
+
+- [x] Find relevant files based on text matches in file summary.
+
 - [x] Modify summaries on detection of new file on prompt search.
 
 - [ ] File summaries generated via LLM api.
