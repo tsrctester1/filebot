@@ -19,6 +19,9 @@ def create_file_summaries(directory):
     except FileNotFoundError:
         file_summaries = {}
 
+    # Set a flag to check if file_summaries.json is updated
+    is_updated = False
+
     for root, dirs, files in os.walk(directory):
         for file in files:
             file_path = os.path.join(root, file)
@@ -28,6 +31,12 @@ def create_file_summaries(directory):
                     'summary': summarize_file(file_path),
                     'mtime': os.path.getmtime(file_path)
                 }
+                # Set the flag to True when file_summaries.json is updated
+                is_updated = True
 
     with open('file_summaries.json', 'w') as json_file:
         json.dump(file_summaries, json_file, indent=4)
+
+    # Notify the user if file_summaries.json is updated
+    if is_updated:
+        print("file_summaries.json has been updated.")
