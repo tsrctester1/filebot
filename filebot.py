@@ -9,10 +9,6 @@ def summarize_file(file_path, summary_length=100):
         content = file.read()
     return content[:summary_length]
 
-import os
-import json
-import time
-
 # Create file summaries
 def create_file_summaries(directory):
     """Walk through a directory and generate a summary for each file."""
