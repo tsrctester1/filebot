@@ -1,0 +1,15 @@
+Generate Q&A pairs in json list: [ [question, answer, [question, answer] ... ] from content: ```April 25, 2023
+
+Subject: Non-binding LOI for Chatbot
+
+Key terms:
+Agreement: Contract to be signed.
+Chatbot: Osan3 creates custom chatbot.
+License: Happy Org's usage rights.
+Governance: To be discussed.
+IP Ownership: Depends on data.
+Termination: Possible.
+Confidentiality: Maintained.
+Representations: Assurances given.
+Governing Law: TBD.
+Entire Agreement: LOI preliminary.
