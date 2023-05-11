@@ -27,8 +27,8 @@ def answer_user_prompt(user_prompt, relevant_info):
         return "I'm sorry, I couldn't find any files that contain the term '{}'. Please try another search.".format(user_prompt)
     else:
         response = "Here are the files that contain the term '{}':\n".format(user_prompt)
-        for file_path in relevant_info.keys():
-            response += "- {}\n".format(file_path)
+        for file_path, content in relevant_info.items():
+            response += "- {}: {}\n".format(file_path, content[:100])  # print the file path and the first 100 characters of the content
         return response
 
 # Main function
