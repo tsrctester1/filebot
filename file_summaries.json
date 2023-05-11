@@ -2,5 +2,25 @@
     "/app/files/loi-osan3-happy.org": {
         "summary": "\n\nOsan3 creates custom chatbot for Happy Org with usage rights, governed by terms to be discussed and data-dependent IP ownership; termination, confidentiality, representations and governing law to be determined; LOI is preliminary.",
         "mtime": 1683838390.2527514
+    },
+    "/app/files/alpha-clinical-trials.md": {
+        "summary": "\n\nOpen Stake Alpha Program - Clinical Research Solutions is an initiative focused on providing solutions for the clinical research industry. It aims to invest in open-source projects and foster collaboration to improve efficiency, data management, and the clinical research process. It offers sponsorship, resources, mentorship, and $107,000 worth of benefits. Eligibility and reporting requirements apply.",
+        "mtime": 1683841247.646447
+    },
+    "/app/files/businessmachine.md": {
+        "summary": "\nCreating folders should have reasonable names and each file should have good names. Spreadsheets should have a .csv copy and other files should have a .txt or .md copy. All folders are converted to a .tar file at the end of each day.",
+        "mtime": 1683841247.646447
+    },
+    "/app/files/business-process.md": {
+        "summary": "Osan3's process involves tracking tasks with a spreadsheet, creating a comprehensive and concise corporate deck, coordinating members on calendars and Discord, and tracking expenses and branding materials in separate directories.```",
+        "mtime": 1683841133.021916
+    },
+    "/app/files/software-dev.md": {
+        "summary": "\n\nClone the osan3 repository from the given URL to your local machine using the git command.",
+        "mtime": 1683841255.192992
+    },
+    "/app/files/Osan3MgmtDeck.md": {
+        "summary": "\nOsan3 shows that there is limited funding for open source projects and a competitive grant application process. Companies and nonprofits have attempted to provide support, but the scope and impact of these efforts is limited. Platforms like GitHub Sponsors and Open Collective allow individuals and organizations to support open source projects, but the total amount donated is small.",
+        "mtime": 1683841255.192992
     }
 }
