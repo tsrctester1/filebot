@@ -1,13 +1,50 @@
 import os
 import json
 import time
+import openai
 
 # Summarize file
 def summarize_file(file_path, summary_length=100):
     """Read a file and return a summary."""
     with open(file_path, 'r') as file:
         content = file.read()
-    return content[:summary_length]
+
+    # Call the OpenAI GPT-3 API
+    with open("openai_api_key", "r") as key_file:
+        openai_api_key = key_file.read().strip()
+
+    os.environ["OPENAI_API_KEY"] = openai_api_key
+    openai.api_key = os.getenv("OPENAI_API_KEY")
+
+    prompt = "Summarize the following in less than 50 words: \
+    ```{}```".format(content)
+
+    summary = openai.Completion.create(
+      model="text-davinci-003",
+      prompt=prompt,
+      temperature=0.7,
+      max_tokens=256,
+      top_p=1,
+      frequency_penalty=0,
+      presence_penalty=0
+    )
+
+    # Get the generated questions and answers
+    print("summary gpt response of '{}'".format(file_path))
+    print("")
+    print("")
+    print(summary)
+
+    summary = summary['choices'][0]['text']
+
+    # Get the generated summary
+    print("")
+    print("parsed gpt response")
+    print("")
+    print("")
+    print(summary)
+
+    return summary
 
 # Create file summaries
 def create_file_summaries(directory):
