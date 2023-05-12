@@ -8,7 +8,7 @@ This project can be highly useful for managing and retrieving information from l
 
 ## Important Usage Warning
 
-Please be aware that FileBot will make an API request to OpenAI for every file it processes. This is necessary for FileBot to generate summaries of each file. However, it also means that the usage of this application can quickly consume a significant number of API requests, especially if you are processing a large number of files or frequently updating files.
+Please be aware that FileBot will make an API request to OpenAI for every file it processes and for each prompt message you send. This is necessary for FileBot to generate summaries of each file and to figure out the relevant files to answer your prompt. However, it also means that the usage of this application can quickly consume a significant number of API requests, especially if you are processing a large number of files or frequently updating files.
 
 OpenAI charges fees based on the number of API requests made, and there are also rate limits on how many requests can be made within a certain timeframe. Therefore, it's important to be mindful of your usage when running FileBot.
 
@@ -91,6 +91,4 @@ Here's a brief explanation of the role of each file/directory:
 
 **file_summaries.json**: This file stores the summaries of each file processed by the application.
 
-**file_summary.py**: This script contains the functions for summarizing files and creating/updating file_summaries.json.
-
-**find_info.py**: This script contains
+**find_info.py**: This script contains the functions used for retrieving and presenting information relevant to the user's prompt. It includes functions to search the file summaries for the user's prompt, to read the relevant files.
