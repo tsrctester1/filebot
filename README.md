@@ -10,7 +10,7 @@ This project can be especially useful for managing and retrieving information fr
 
 Please note that FileBot is currently in the early stages of development and does not have full functionality yet. Specifically:
 
-- The project currently uses a simple search mechanism and may not accurately find relevant information based on complex or abstract user prompts.
+- ~~The project currently uses a simple search mechanism and may not accurately find relevant information based on complex or abstract user prompts.~~ It does now.
 - The project currently only supports text files. Other types of files (like PDFs or Word documents) are not supported.
 - The project does not yet support breaking up files that exceed a certain size or token limit.
 - The project currently only outputs the paths of relevant files, but does not provide specific information or answers from these files.
@@ -56,9 +56,9 @@ Once you've started the Docker container, the application will ask you to enter 
 
 - [x] Modify summaries on detection of new file on prompt search.
 
-- [ ] File summaries generated via LLM api.
+- [x] File summaries generated via LLM api.
 
-- [ ] User can ask for relevant files based on entire file summaries.
+- [x] User can ask for relevant files based on entire file summaries.
 
 ## How it works
 
