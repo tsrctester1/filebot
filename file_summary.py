@@ -33,20 +33,12 @@ def summarize_file(file_path, max_token_length=3900):
       presence_penalty=0
     )
 
-    # Get the generated questions and answers
-    print("summary gpt response of '{}'".format(file_path))
-    print("")
-    print("")
-    print(json_response)
-
     summary = json_response['choices'][0]['text']
 
     # Get the generated summary
     print("")
-    print("parsed gpt response")
+    print(f"'{file_path}' summary: {summary}")
     print("")
-    print("")
-    print(summary)
 
     return summary
 
