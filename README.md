@@ -6,6 +6,16 @@ FileBot is a Python-based project designed to answer user prompts based on the c
 
 This project can be highly useful for managing and retrieving information from large numbers of text files or documents. For example, you could use it to find contracts that contain certain terms, list reports that mention specific events, or retrieve articles that discuss particular topics.
 
+## Important Usage Warning
+
+Please be aware that FileBot will make an API request to OpenAI for every file it processes. This is necessary for FileBot to generate summaries of each file. However, it also means that the usage of this application can quickly consume a significant number of API requests, especially if you are processing a large number of files or frequently updating files.
+
+OpenAI charges fees based on the number of API requests made, and there are also rate limits on how many requests can be made within a certain timeframe. Therefore, it's important to be mindful of your usage when running FileBot.
+
+Always ensure that you monitor your OpenAI API usage to avoid unexpectedly high charges or hitting rate limits. If possible, consider implementing strategies to reduce the number of API requests, such as processing only new or updated files, avoiding unnecessary updates to files, or reducing the frequency of file processing.
+
+FileBot is designed to be a helpful tool, but like all tools, it should be used responsibly. Always be aware of the potential costs and ensure you're using it in a way that aligns with your needs and budget.
+
 ## Current State and Limitations
 
 Please note that FileBot is currently in the early stages of development and does not have full functionality yet. Specifically:
@@ -51,6 +61,7 @@ Once you've started the Docker container, the application will ask you to enter 
 - [x] Modify summaries on detection of new file on prompt search.
 - [x] File summaries generated via OpenAI GPT-3 API.
 - [x] User can ask for relevant files based on entire file summaries.
+- [ ] Drop in any small LLM or OpenAI API compatible service.
 - [ ] Support pdf files.
 - [ ] Support a variety of other common file types.
 
