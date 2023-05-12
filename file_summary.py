@@ -23,31 +23,6 @@ def summarize_file(file_path, max_token_length=3900):
     os.environ["OPENAI_API_KEY"] = openai_api_key
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
-    ## Fake openai response.
-    #json_response = '''
-    #{
-    #  "choices": [
-    #    {
-    #      "finish_reason": "stop",
-    #      "index": 0,
-    #      "logprobs": null,
-    #      "text": "The provided email outlines the key terms for a non-binding Letter of Intent (LOI) regarding a chatbot project. The terms include the agreement to be signed, the creation of a custom chatbot by Osan3, licensing for Happy Org's usage rights, governance details to be discussed, IP ownership depending on data, possible termination, confidentiality maintenance, representations given, the governing law to be determined, and the LOI being considered preliminary."
-    #    }
-    #  ],
-    #  "created": 1682805000,
-    #  "id": "cmpl-7Amk4VjXv8wzZdKOyZzbyiHECtU6c",
-    #  "model": "text-davinci-003",
-    #  "object": "text_completion",
-    #  "usage": {
-    #    "completion_tokens": 251,
-    #    "prompt_tokens": 400,
-    #    "total_tokens": 651
-    #  }
-    #}
-    #'''
-
-    #json_response = json.loads(json_response)
-
     json_response = openai.Completion.create(
       model="text-davinci-003",
       prompt=prompt,
