@@ -92,3 +92,7 @@ Here's a brief explanation of the role of each file/directory:
 **file_summaries.json**: This file stores the summaries of each file processed by the application.
 
 **find_info.py**: This script contains the functions used for retrieving and presenting information relevant to the user's prompt. It includes functions to search the file summaries for the user's prompt, to read the relevant files.
+
+**token_checker.py**: This script contains a function to check whether the token count of a string (in this case, a file's content) is within a specified limit. This is used to ensure that the content sent to the OpenAI API doesn't exceed the maximum token limit.
+
+**token_counter.py**: This script contains a function that counts the number of tokens in a string. It is used by the token_checker.py script to determine whether a file's content is within the OpenAI API's token limit.
