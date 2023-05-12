@@ -1,20 +1,15 @@
-import openai
+from typing import Tuple
+from token_counter import num_tokens_from_string
 
-def check_token_length(content, max_length=4096):
+def check_token_length(content: str, max_length: int, model: str) -> Tuple[bool, str]:
     """
-    Checks the token length of a string.
-    Args:
-        content (str): The string to check.
-        max_length (int): The maximum allowed length. Defaults to 4096 (GPT-3's limit).
-    Returns:
-        bool: True if the content is within the allowed length, False otherwise.
-        str: The content, possibly truncated to the maximum allowed length.
+    Check if the token length of the content is within the specified maximum length.
+    Returns a tuple (is_within_limit, content), where is_within_limit is a boolean indicating if the content is within the limit,
+    and content is the original content or truncated content if it exceeds the limit.
     """
-    token_length = len(openai.api_utils.tokens_of_string(content))
+    token_length = num_tokens_from_string(content, model)
 
     if token_length > max_length:
-        print(f"Warning: The content exceeds the maximum allowed length of {max_length} tokens. It will be truncated.")
-        content = openai.api_utils.truncate_tokens(content, max_length)
         return False, content
-    else:
-        return True, content
+
+    return True, content
