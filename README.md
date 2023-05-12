@@ -59,3 +59,36 @@ Once you've started the Docker container, the application will ask you to enter 
 - [ ] File summaries generated via LLM api.
 
 - [ ] User can ask for relevant files based on entire file summaries.
+
+## How it works
+
+Here's a brief explanation of the role of each file/directory:
+
+```
+├── Dockerfile
+├── filebot.py
+├── files/
+├── file_summaries.json
+├── file_summary.py
+├── openai_api_key
+├── README.md
+├── requirements.txt
+```
+
+- `Dockerfile`: This file is used by Docker to build a Docker image for the application. It contains instructions for how the Docker image should be built.
+
+- `filebot.py`: This is the main script of the application. It uses functions from `file_summary.py` to generate file summaries and find relevant information based on user prompts.
+
+- `files/`: This directory contains the files that the application will process and summarize.
+
+- `file_summaries.json`: This file stores the summaries of each file processed by the application.
+
+- `file_summary.py`: This script contains the functions for summarizing files and creating/updating `file_summaries.json`.
+
+- `openai_api_key`: This file contains the OpenAI API key, which is used by the `file_summary.py` script to interact with the OpenAI GPT-3 API.
+
+- `README.md`: This file provides an overview of the project, including its purpose, how to set up and run the application, and a list of future features to be added.
+
+- `requirements.txt`: This file lists the Python packages that the application depends on. Docker will use this file to install these packages in the Docker image.
+
+The separation of functionality into different scripts (`filebot.py` and `file_summary.py`) is a particularly good practice as it makes the code more modular and easier to test and debug.
