@@ -51,6 +51,8 @@ Once you've started the Docker container, the application will ask you to enter 
 - [x] Modify summaries on detection of new file on prompt search.
 - [x] File summaries generated via OpenAI GPT-3 API.
 - [x] User can ask for relevant files based on entire file summaries.
+- [ ] Support pdf files.
+- [ ] Support a variety of other common file types.
 
 ## How it works
 
@@ -71,8 +73,13 @@ Here's a brief explanation of the role of each file/directory:
 ```
 
 **Dockerfile**: This file is used by Docker to build a Docker image for the application. It contains instructions for how the Docker image should be built.
+
 **filebot.py**: This is the main script of the application. It uses functions from file_summary.py and find_info.py to generate file summaries and find relevant information based on user prompts.
+
 **files/**: This directory contains the files that the application will process and summarize.
+
 **file_summaries.json**: This file stores the summaries of each file processed by the application.
+
 **file_summary.py**: This script contains the functions for summarizing files and creating/updating file_summaries.json.
+
 **find_info.py**: This script contains
