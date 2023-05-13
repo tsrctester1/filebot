@@ -6,7 +6,7 @@ import openai
 from token_counter import num_tokens_from_string
 
 # Modify the summarize_file function
-def summarize_file(file_path, max_token_length=4096):
+def summarize_file(file_path, max_token_length=3000):
     """Read a file and return a summary."""
     with open(file_path, 'r') as file:
         content = file.read()
@@ -15,7 +15,24 @@ def summarize_file(file_path, max_token_length=4096):
 
     if total_tokens <= max_token_length:
         prompt = f"My task is to summarize the document. Here is the document:\n\n{content}"
-        summary = get_gpt3_summary(prompt)  # function to get the GPT-3 summary
+        # Call the OpenAI GPT-3 API
+        with open("openai_api_key", "r") as key_file:
+            openai_api_key = key_file.read().strip()
+
+        os.environ["OPENAI_API_KEY"] = openai_api_key
+        openai.api_key = os.getenv("OPENAI_API_KEY")
+
+        json_response = openai.Completion.create(
+          model="text-davinci-003",
+          prompt=prompt,
+          temperature=0.7,
+          max_tokens=150,
+          top_p=1,
+          frequency_penalty=0,
+          presence_penalty=0
+        )
+
+        summary = json_response['choices'][0]['text']
         return [(file_path, summary)]
 
     # content exceeds max_token_length
@@ -36,7 +53,7 @@ def summarize_file(file_path, max_token_length=4096):
           model="text-davinci-003",
           prompt=prompt,
           temperature=0.7,
-          max_tokens=256,
+          max_tokens=150,
           top_p=1,
           frequency_penalty=0,
           presence_penalty=0
@@ -46,6 +63,9 @@ def summarize_file(file_path, max_token_length=4096):
         summaries.append((f"{file_path}.{i//max_token_length}", summary))
 
     return summaries
+
+# Modify the create_file_summaries function
+# No changes to the summarize_file function
 
 # Modify the create_file_summaries function
 def create_file_summaries(directory):
@@ -63,10 +83,13 @@ def create_file_summaries(directory):
     for root, dirs, files in os.walk(directory):
         for file in files:
             file_path = os.path.join(root, file)
+            base_file_path, _ = os.path.splitext(file_path)
+
             # Check if the file is new or updated
-            if file_path not in file_summaries or file_summaries[file_path]['mtime'] < os.path.getmtime(file_path):
-                summaries = summarize_file(file_path)
+            if all(not key.startswith(base_file_path) for key in file_summaries.keys()) or \
+            any(file_summaries[key]['mtime'] < os.path.getmtime(file_path) for key in file_summaries.keys() if key.startswith(base_file_path)):
                 print(f"New or updated file detected: '{file_path}'")
+                summaries = summarize_file(file_path)
                 if summaries:
                     for path, summary in summaries:
                         file_summaries[path] = {
