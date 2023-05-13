@@ -1,22 +1,26 @@
-import os
-import openai
+from llama_cpp import Llama
 
-# Call the OpenAI GPT-3 API
-with open("openai_api_key", "r") as key_file:
-    openai_api_key = key_file.read().strip()
+# Initialize Llama model
+llm = Llama(model_path="/path/to/your/model.bin")
 
-os.environ["OPENAI_API_KEY"] = openai_api_key
-openai.api_key = os.getenv("OPENAI_API_KEY")
+def generate_completion(prompt, max_tokens=150, stop=None, temperature=0.7):
+    """
+    Generate a completion using Llama model.
 
-def generate_completion(prompt, max_tokens=256, temperature=0.7):
-    json_response = openai.Completion.create(
-      model="text-davinci-003",
-      prompt=prompt,
-      temperature=temperature,
-      max_tokens=max_tokens,
-      top_p=1,
-      frequency_penalty=0,
-      presence_penalty=0
-    )
+    Parameters:
+    prompt (str): The prompt to be completed.
+    max_tokens (int, optional): The maximum length of the generated text.
+    stop (str or list, optional): One or more stop sequences. The generation will stop as soon as one of these sequences is encountered.
+    temperature (float, optional): Controls the randomness of the generated text.
 
-    return json_response['choices'][0]['text']
+    Returns:
+    str: The generated completion.
+    """
+
+    # Generate text completion
+    output = llm(prompt, max_tokens=max_tokens, stop=stop, temperature=temperature, echo=True)
+
+    # Extract the generated text from the completion
+    generated_text = output["choices"][0]["text"]
+
+    return generated_text
