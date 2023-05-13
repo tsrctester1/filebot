@@ -2,8 +2,8 @@ import os
 import json
 import time
 import math
-import openai
 from token_counter import num_tokens_from_string
+from llm_model import generate_completion
 
 # Modify the summarize_file function
 def summarize_file(file_path, max_token_length=3000):
@@ -11,61 +11,25 @@ def summarize_file(file_path, max_token_length=3000):
     with open(file_path, 'r') as file:
         content = file.read()
 
-    total_tokens = num_tokens_from_string(content, 'gpt3')
+    total_tokens = num_tokens_from_string(content, 'llm')
 
     if total_tokens <= max_token_length:
         prompt = f"My task is to summarize the document. Here is the document:\n\n{content}"
-        # Call the OpenAI GPT-3 API
-        with open("openai_api_key", "r") as key_file:
-            openai_api_key = key_file.read().strip()
 
-        os.environ["OPENAI_API_KEY"] = openai_api_key
-        openai.api_key = os.getenv("OPENAI_API_KEY")
-
-        json_response = openai.Completion.create(
-          model="text-davinci-003",
-          prompt=prompt,
-          temperature=0.7,
-          max_tokens=150,
-          top_p=1,
-          frequency_penalty=0,
-          presence_penalty=0
-        )
-
-        summary = json_response['choices'][0]['text']
+        summary = generate_completion(prompt)
         return [(file_path, summary)]
 
     # content exceeds max_token_length
     summaries = []
     for i in range(0, total_tokens, max_token_length):
-        print(f"gpt summary request {i}")
+        print(f"llm summary request {i}")
         chunk = content[i: i + max_token_length]
         prompt = f"My task is to summarize the document. Here is the document:\n\n{chunk}"
 
-        # Call the OpenAI GPT-3 API
-        with open("openai_api_key", "r") as key_file:
-            openai_api_key = key_file.read().strip()
-
-        os.environ["OPENAI_API_KEY"] = openai_api_key
-        openai.api_key = os.getenv("OPENAI_API_KEY")
-
-        json_response = openai.Completion.create(
-          model="text-davinci-003",
-          prompt=prompt,
-          temperature=0.7,
-          max_tokens=150,
-          top_p=1,
-          frequency_penalty=0,
-          presence_penalty=0
-        )
-
-        summary = json_response['choices'][0]['text']
+        summary = generate_completion(prompt)
         summaries.append((f"{file_path}.{i//max_token_length}", summary))
 
     return summaries
-
-# Modify the create_file_summaries function
-# No changes to the summarize_file function
 
 # Modify the create_file_summaries function
 def create_file_summaries(directory):

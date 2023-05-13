@@ -1,10 +1,8 @@
 import os
 import json
-import time
-import openai
 from token_checker import check_token_length
+from llm_model import generate_completion
 
-# Find file from summaries.
 def find_relevant_info(user_prompt, max_token_length=3900):
     with open('file_summaries.json', 'r') as json_file:
         file_summaries = json.load(json_file)
@@ -15,23 +13,6 @@ def find_relevant_info(user_prompt, max_token_length=3900):
     if not is_within_limit:
         return "The content is too large to summarize."
 
-    # Call the OpenAI GPT-3 API
-    with open("openai_api_key", "r") as key_file:
-        openai_api_key = key_file.read().strip()
-
-    os.environ["OPENAI_API_KEY"] = openai_api_key
-    openai.api_key = os.getenv("OPENAI_API_KEY")
-
-    json_response = openai.Completion.create(
-      model="text-davinci-003",
-      prompt=user_prompt,
-      temperature=0.7,
-      max_tokens=256,
-      top_p=1,
-      frequency_penalty=0,
-      presence_penalty=0
-    )
-
-    response = json_response['choices'][0]['text']
+    response = generate_completion(user_prompt)
 
     return response
