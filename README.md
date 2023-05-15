@@ -6,8 +6,6 @@ FileBot is a Python-based project designed to answer user prompts based on the c
 
 This project can be highly useful for managing and retrieving information from large numbers of text files or documents. For example, you could use it to find contracts that contain certain terms, list reports that mention specific events, or retrieve articles that discuss particular topics.
 
-
-
 ## Important Usage Warning
 
 Please be aware that FileBot will make an API request to OpenAI for every file it processes and for each prompt message you send. This is necessary for FileBot to generate summaries of each file and to figure out the relevant files to answer your prompt. However, it also means that the usage of this application can quickly consume a significant number of API requests, especially if you are processing a large number of files or frequently updating files.
