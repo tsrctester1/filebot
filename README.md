@@ -2,7 +2,7 @@
 
 ## About
 
-FileBot is a Python-based project designed to answer user prompts based on the content of specified files. It works by summarizing the contents of files, identifying relevant files based on a user prompt, and then returning a response with the paths of the relevant files.
+FileBot is a Python-based project designed to be a stand-alone utility or a service to other bots or tools to help answer user prompts based on the content of specified files. It works by summarizing the contents of files, identifying relevant files based on a user prompt, and then returning a response with the paths of the relevant files.
 
 This project can be highly useful for managing and retrieving information from large numbers of text files or documents. For example, you could use it to find contracts that contain certain terms, list reports that mention specific events, or retrieve articles that discuss particular topics.
 
