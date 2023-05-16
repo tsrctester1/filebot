@@ -21,7 +21,7 @@ python3 -m fastchat.serve.controller --host 0.0.0.0
 Launch worker(s). Defaults to `gpu` without `cpu` flag.
 
 ```
-python3 -m fastchat.serve.model_worker --model-name 'vicuna-13b-v1.1' --model-path model/ --device cpu
+python3 -m fastchat.serve.model_worker --model-name 'vicuna-13b-v1.1' --model-path model/ --host 0.0.0.0 --device cpu
 ```
 
 ## Other
