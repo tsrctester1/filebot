@@ -13,5 +13,7 @@ WORKDIR /app/
 # Install Package
 RUN pip3 install --upgrade pip && pip3 install -e .
 
+EXPOSE 21001
+
 # Set the entrypoint
-#ENTRYPOINT [ "fschat" ]
+ENTRYPOINT [ "fschat" ]
