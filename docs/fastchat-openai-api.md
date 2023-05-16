@@ -1,8 +1,26 @@
 ## Usage
 
+Build image.
+
+```
+docker build -t my-fastchat-image -f docker/fastchat .
+```
+
+Run container.
+
 ```
 docker run -it --mount type=bind,source=/home/david/projects/filebot/model,target=/app/model,readonly my-fastchat-image bash
 ```
+
+Launch controller.
+
+```
+python3 -m fastchat.serve.controller --host 0.0.0.0
+```
+
+
+## Other
+
 You can use openai python library. Appears all you need is to change the endpoint, essentially, to the fastchat server.
 
 `https://github.com/lm-sys/FastChat#api`
