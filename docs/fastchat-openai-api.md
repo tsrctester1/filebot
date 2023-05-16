@@ -1,3 +1,8 @@
+## Usage
+
+```
+docker run -it --mount type=bind,source=/home/david/projects/filebot/model,target=/app/model,readonly my-fastchat-image bash
+```
 You can use openai python library. Appears all you need is to change the endpoint, essentially, to the fastchat server.
 
 `https://github.com/lm-sys/FastChat#api`
