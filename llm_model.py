@@ -8,7 +8,7 @@ with open("openai_api_key", "r") as key_file:
 os.environ["OPENAI_API_KEY"] = openai_api_key
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-def generate_completion(prompt, max_tokens=256, temperature=0.7):
+def generate_completion(prompt, max_tokens=256, temperature=0.8):
     json_response = openai.Completion.create(
       model="text-davinci-003",
       prompt=prompt,
