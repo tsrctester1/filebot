@@ -1,4 +1,5 @@
 import json
+import re
 from file_summary import create_file_summaries
 from find_info import find_relevant_info
 
@@ -21,7 +22,15 @@ def main():
 
     response = answer_user_prompt(relevant_info)
     # Get the response
-    print(response)
+    # Regular expression to match the file paths
+    pattern = r"(/app/files/[\w/-]+\.md)"
+
+    # Extract file paths
+    file_paths = re.findall(pattern, response)
+
+    # Print file paths
+    for file in file_paths:
+        print(file)
 
 if __name__ == '__main__':
     main()
