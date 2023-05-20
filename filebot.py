@@ -28,9 +28,12 @@ def main():
     # Extract file paths
     file_paths = re.findall(pattern, response)
 
-    # Print file paths
-    for file in file_paths:
-        print(file)
+    if file_paths:
+      # Print file paths
+      for file in file_paths:
+          print(file)
+      else:
+          print("No files found")
 
 if __name__ == '__main__':
     main()
