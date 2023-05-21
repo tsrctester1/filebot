@@ -19,11 +19,9 @@ def find_relevant_info(user_prompt, max_token_length=3900):
     user_prompt = f"{prepend_prompt}. Which files possibly have relevant info to the prompt `{user_prompt}` based on the following file summaries:\n\n{file_summaries}"
     is_within_limit, user_prompt = check_token_length(user_prompt, max_token_length, 'gpt-3')
 
-    print(user_prompt)
     if not is_within_limit:
         return "The content is too large to summarize."
 
-    #response = generate_completion(user_prompt)
-    response = "/apps/files/hello"
+    response = generate_completion(user_prompt)
 
     return response

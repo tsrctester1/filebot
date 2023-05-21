@@ -1,26 +1,90 @@
 {
-    "/app/files/loi-osan3-happy.org": {
-        "summary": "\n\nOsan3 creates custom chatbot for Happy Org with usage rights, governed by terms to be discussed and data-dependent IP ownership; termination, confidentiality, representations and governing law to be determined; LOI is preliminary.",
-        "mtime": 1683838390.2527514
+    "/app/files/turbosrc-service/README.md": {
+        "summary": "\nThis document outlines the setup and usage of TurboSrc, a service for running automated tests on GitHub repositories. It includes instructions for cloning the repository, creating a Github Personal Access Token, encrypting the token, setting up the config file, installing Node v12.22.0, installing dependencies, and starting the server. It also provides commands for starting, stopping, and restarting TurboSrc, as well as more granular commands for testing a Github repository, such as 'delete_fork', 'fork_repo', 'create_pull_request', and 'run_tests'.",
+        "mtime": 1683917976.1397755
     },
-    "/app/files/alpha-clinical-trials.md": {
-        "summary": "\n\nOpen Stake Alpha Program - Clinical Research Solutions is an initiative focused on providing solutions for the clinical research industry. It aims to invest in open-source projects and foster collaboration to improve efficiency, data management, and the clinical research process. It offers sponsorship, resources, mentorship, and $107,000 worth of benefits. Eligibility and reporting requirements apply.",
-        "mtime": 1683841247.646447
+    "/app/files/turbosrc-service/LICENSE": {
+        "summary": "\n\nThis document is the MIT License, which grants permission to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, while including a copyright notice and disclaimer of warranty. All persons are permitted to use the software, but must comply with the conditions of the license.",
+        "mtime": 1683917976.1397755
     },
-    "/app/files/businessmachine.md": {
-        "summary": "\nCreating folders should have reasonable names and each file should have good names. Spreadsheets should have a .csv copy and other files should have a .txt or .md copy. All folders are converted to a .tar file at the end of each day.",
-        "mtime": 1683841247.646447
+    "/app/files/turbosrc-service/server.js.0": {
+        "summary": "!\n  }\n\n  type Query {\n    getGithubUser: String!\n    getPRhead: PullRequest!\n    gitHeadUtil: PullRequest!\n    getGitHubPullRequest(pr_uid: String!): ghPullRequest!\n    createPullRequest: Boolean!\n    closePullRequest(pr_uid: String!): Boolean!\n    mergePullRequest(pr_uid: String!): Boolean!\n    fork(pr_uid: String!): Boolean!\n    verify(pr_uid: String!): Boolean!\n    checkGithubTokenPermissions: Boolean!\n    createTsrcPullRequest(pr_uid: String!): Boolean!\n",
+        "mtime": 1683917976.173109
     },
-    "/app/files/business-process.md": {
-        "summary": "Osan3's process involves tracking tasks with a spreadsheet, creating a comprehensive and concise corporate deck, coordinating members on calendars and Discord, and tracking expenses and branding materials in separate directories.```",
-        "mtime": 1683841133.021916
+    "/app/files/turbosrc-service/server.js.1": {
+        "summary": ": String, contributor_id: String, side: String, token: String): String,\n  }\n\nThis document is a list of the different Query functions that are available in the Tsrc platform. The functions are related to creating, retrieving, and modifying pull requests, checking Github token permissions, getting and setting votes, creating and verifying repositories, and checking authorized contributors.",
+        "mtime": 1683917976.173109
     },
-    "/app/files/software-dev.md": {
-        "summary": "\n\nClone the osan3 repository from the given URL to your local machine using the git command.",
-        "mtime": 1683841255.192992
+    "/app/files/turbosrc-service/tsrc-dev": {
+        "summary": "\nThis document provides instructions for running a program called tsrc-test. It outlines four commands: start, stop, restart, and test. The start command starts services that run the program, the stop command stops services, the restart command stops and restarts the services, and the test command runs tests for a given user, repository, and action. Each command has a detailed explanation of how to use it.",
+        "mtime": 1683917976.1797757
     },
-    "/app/files/Osan3MgmtDeck.md": {
-        "summary": "\nOsan3 shows that there is limited funding for open source projects and a competitive grant application process. Companies and nonprofits have attempted to provide support, but the scope and impact of these efforts is limited. Platforms like GitHub Sponsors and Open Collective allow individuals and organizations to support open source projects, but the total amount donated is small.",
-        "mtime": 1683841255.192992
+    "/app/files/turbosrc-service/tsrc-test": {
+        "summary": "\nThis document outlines a series of functions for automating actions related to forked repositories. These functions are delete_fork, fork_repo, create_pull_request, run_tests, execute_all, and execute_all_except_tests. The functions use docker commands to run GitHub Maker Tools, Fork Repo, and Create Pull Requests, as well as NPM commands to run tests. These functions are executed with the command line argument of a username, a repository, and a function.",
+        "mtime": 1683917976.1797757
+    },
+    "/app/files/turbosrc-service/.config.json": {
+        "summary": "\n\nThis document is a config file containing the settings for a GitHub organization called \"turbo-src\". It contains credentials for the organization's user, API token, JWT, and store repositories. Also included are credentials for 12 testers, including their user name, key, and API token.",
+        "mtime": 1683917976.0964417
+    },
+    "/app/files/turbosrc-service/scripts/tests.sh": {
+        "summary": "\nThis document is a Bash script that runs a series of Docker commands to facilitate the forking, pull request creation and testing of a repository. It includes functions for deleting forks, forking a repository, creating pull requests, running tests and executing all of these tasks except the tests. It requires two command line arguments: the username and the repository name. It also requires a third argument to specify what tasks should be executed.",
+        "mtime": 1683917976.173109
+    },
+    "/app/files/turbosrc-service/src/lib/actions.js.0": {
+        "summary": "g('convertDefaultHash')\n    console.log('convertDefaultHash', defaultHash)\n    console.log('owner', owner)\n    console.log('repo', repo)\n    console.log('write', write)\n    console.log('contributor_id', contributor_id)\n    const issueID = defaultHash\n    const pullRequest = await getPullRequest(owner, repo, issueID)\n    console.log('pr', pullRequest)\n    const { head, mergeable } = await getGitHubPRhead(owner, repo, issueID, contributor_id)\n    console.log('head', head)\n    console.log('",
+        "mtime": 1683917976.173109
+    },
+    "/app/files/turbosrc-service/src/lib/actions.js.1": {
+        "summary": "attus: 500, mergeable: mergeable, defaultHash: defaultHash, childDefaultHash: defaultHash }\n    }\n\nThis document is a code which checks the status of a given Github repository and its branches. It first checks if the mode is 'online' or 'offline', then checks for the tsrcID and sets the head to the given defaultHash. It then checks if the head is null or undefined, and if it is, returns a 500 status code and the defaultHash. If the tsrcID is the same as the head, it converts the defaultHash and childDefaultHash to the head. If the tsrcID is different from the head and not null, it converts the defaultHash to",
+        "mtime": 1683917976.173109
+    },
+    "/app/files/turbosrc-service/src/lib/state.js": {
+        "summary": "\nThis document is a collection of functions for an application related to the management of repositories, tokens, contributors, and pull requests. The functions are used to create repositories, create token supplies, transfer tokens between contributors, set quorums, create pull requests, get contributor tokens, set contributor voted tokens, set vote sides, set the repository head, set the pull request status, get the repository head, get open pull requests, get pull requests, get all pull requests, delete pull requests, get contributor voted tokens, get all voted tokens, get contributor token amounts, get token supplies, get quorums, get total voted tokens, get total voted yes tokens, get pull requests from history, get total voted no tokens, get repository status,",
+        "mtime": 1683917976.173109
+    },
+    "/app/files/turbosrc-service/src/utils/gitHubUtil.js": {
+        "summary": "\nThis document is a JavaScript file that contains code to get a Github token, verify a token, check Github token permissions, get Github pull requests, create pull requests, close pull requests, merge pull requests, fork repositories, and assign them to organizations. It also contains code to read files, post requests, and get data from JSON files. It uses the Octokit, App, fsPromises, fs, path, postGetContributorName, getJWT, and getTurbosrcMode modules, as well as the dotenv and jsonwebtoken modules.",
+        "mtime": 1683917976.173109
+    },
+    "/app/files/turbosrc-service/src/utils/requests.js.0": {
+        "summary": "intributor_id}\", side: \"${side}\", head: \"${head}\") }`,\n        }\n        //{ query: '{ setVote(defaultHash: \"default\" contributorId: \"2\", side: 1 ) { vote_code }' }\n      ) // sends a JSON post body\n      .set(\"accept\", \"json\")\n      .end((err, res) => {\n        // Calling the end function will send the request\n      });\n  },\n};\n\nThis document describes three functions which use superagent and the GraphQL language parser to create a repository, create a token supply, and set the head of a repository. These functions are used to interact",
+        "mtime": 1683917976.1764424
+    },
+    "/app/files/turbosrc-service/src/utils/requests.js.1": {
+        "summary": "id) => {\n    const res = await superagent\n      .post(`${port}/graphql`)\n      .send({\n        query: `{ getContributorName(owner: \"${owner}\", repo: \"${repo}\", defaultHash: \"${defaultHash}\", cid: \"${cid}\") }`,\n      })\n      .set(\"accept\", \"json\");\n\n    const json = JSON.parse(res.text);\n    return json.data.getContributorName;\n  },\n\nThis document contains a series of functions for the GraphQL API. These functions are postSetVoteTestDB, postSetQuorumTestDB, post",
+        "mtime": 1683917976.1764424
+    },
+    "/app/files/turbosrc-service/src/utils/requests.js.2": {
+        "summary": " //.end((err, res) => {\n    // Calling the end function will send the request\n    //});\n    console.log(\"gqlr 123\");\n    const json = JSON.parse(res.text);\n    console.log(json);\n    return json.data.getContributorSignature;\n  },\n\nThis document outlines three functions that can be used to access data from a GraphQL query. The first function, postGetContributorName, takes an owner, repo, defaultHash, and contributor_id as parameters and returns the contributor's name. The second function, postGetContributorID, takes an owner, repo, defaultHash, and contributor_name as parameters",
+        "mtime": 1683917976.1764424
+    },
+    "/app/files/turbosrc-service/src/utils/config.js": {
+        "summary": "\nThis document is a JavaScript code module that exports a set of functions for retrieving information from a .config.json file. The functions include getGithubContributor, which reads the user from the file; getContributorAddress, which reads the contributor address from the file; getRepoAddress, which reads the repo address from the file; getTurbosrcMode, which reads the mode from the file; getJWT, which reads the JWT from the file; and getServiceEndpoint, which reads the endpoint URL for a given service from the file.",
+        "mtime": 1683917976.173109
+    },
+    "/app/files/turbosrc-service/src/utils/privateStoreRequests.js": {
+        "summary": "\nThis document is a set of functions written in JavaScript using the Superagent library that are used to interact with a private store. The functions enable users to create a user, create a repository, create a pull request, transfer tokens, set and get quorums, and get user vote totals.",
+        "mtime": 1683917976.173109
+    },
+    "/app/files/turbosrc-service/src/utils/gitHeadUtil.js": {
+        "summary": "\nThis document is a code snippet that exports a function to be used to get a specified commit SHA (a unique identifier) from a GitHub repository. The code snippet requires the use of the Octokit, App, fsPromises, fs, path, and getGithubToken libraries and the JWT module. The function takes in the repository owner, repository name, fork branch, and head minus number, and returns the SHA of the specified commit. If an error occurs, the status code 404 is returned.",
+        "mtime": 1683917976.173109
+    },
+    "/app/files/turbosrc-service/src/utils/pullForkUtil.js": {
+        "summary": ";\n\nThis document is a Node.js module containing functions related to creating and managing forks of a repository. It includes functions to execute shell commands, calculate the SHA256 hash of a file, create a tar archive of a repository, and get a pull request's head. It also contains a getPRhead() function that takes arguments like the repository owner and name, and returns the pull request's data and head.",
+        "mtime": 1683917976.1764424
+    },
+    "/app/files/turbosrc-service/src/utils/ghServiceRequests.js": {
+        "summary": "\nThis document is an example of a Node.js module that is used to interact with a service endpoint in order to create an issue, get an issue ID, or get a Tsrc ID. It uses the Superagent library to make requests to the endpoint and the Config library to get the endpoint address. The module contains three functions: postCreateIssue, postGetIssueID, and postGetTsrcID, which each make a request to the endpoint with a particular query.",
+        "mtime": 1683917976.173109
+    },
+    "/app/files/turbosrc-service/src/utils/nameSpaceRequests.js": {
+        "summary": "\nThis document contains code for the required functions for a \"namespace\" system. These functions include postCreateUser, postGetContributorName, postGetContributorID, postGetContributorSignature, getUser, and findOrCreateUser. Each of these functions use an endpoint provided by the getServiceEndpoint function to query a database and return the requested information.",
+        "mtime": 1683917976.173109
+    },
+    "/app/files/turbosrc-service/fly.toml": {
+        "summary": "\nThis document is a fly.toml file generated for a turbosrc-service on August 29th, 2022. It contains settings such as the kill signal, its timeout, and build parameters such as the builder. It includes environmental variables, like PORT, and experimental settings such as auto_rollback. In addition, it outlines the services, such as its http_checks, internal port, processes, protocol, scripts_checks, concurrency, ports, and tcp_checks.",
+        "mtime": 1683924151.5279818
     }
 }
