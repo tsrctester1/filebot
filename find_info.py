@@ -25,3 +25,29 @@ def find_relevant_info(user_prompt, max_token_length=3900):
     response = generate_completion(user_prompt)
 
     return response
+
+def get_file_content(file_path):
+    """Fetch the content of a file at a given file path."""
+    with open(file_path, 'r') as file:
+        content = file.read()
+
+    return content
+
+def answer_prompt(file_path, user_prompt, max_token_length=3900):
+    content = get_file_content(file_path)
+
+    config = configparser.ConfigParser()
+    config.read('filebot.config')
+
+    # Get prepend text
+    prepend_prompt = config['DEFAULT'].get('PrependPrompt', '')
+
+    user_prompt = f"{prepend_prompt} {user_prompt}"
+    is_within_limit, user_prompt = check_token_length(user_prompt, max_token_length, 'gpt-3')
+
+    if not is_within_limit:
+        return "The content is too large to summarize."
+
+    response = generate_completion(f"{user_prompt}: ```{content}```")
+
+    return response
