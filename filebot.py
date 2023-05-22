@@ -12,6 +12,13 @@ def answer_user_prompt(relevant_info):
         response = "Answer: {}".format(relevant_info)
         return response
 
+# Extract file paths from response
+def extract_file_paths(response):
+    """Extract file paths from the response using regular expressions."""
+    pattern = r"(/app/files\S*)'"
+    file_paths = re.findall(pattern, response)
+    return file_paths
+
 # Main function
 def main():
     directory = '/app/files'
@@ -21,18 +28,14 @@ def main():
     relevant_info = find_relevant_info(user_prompt)
 
     response = answer_user_prompt(relevant_info)
-    # Get the response
-    # Regular expression to match the file paths
-    print(response)
-    pattern = r"(/app/files\S*)'"
 
     # Extract file paths
-    file_paths = re.findall(pattern, response)
+    file_paths = extract_file_paths(response)
 
     if file_paths:
-      # Print file paths
-      for file in file_paths:
-          print(file)
+        # Print file paths
+        for file in file_paths:
+            print(file)
     else:
         print("No files found")
 
