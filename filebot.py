@@ -24,7 +24,7 @@ def main():
     # Get the response
     # Regular expression to match the file paths
     print(response)
-    pattern = r"(/app/files\S*)"
+    pattern = r"(/app/files\S*)'"
 
     # Extract file paths
     file_paths = re.findall(pattern, response)
