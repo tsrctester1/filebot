@@ -2,6 +2,7 @@ import json
 import re
 from file_summary import create_file_summaries
 from find_info import find_relevant_info
+from find_info import answer_prompt
 
 # Answer user prompt
 def answer_user_prompt(relevant_info):
@@ -35,7 +36,9 @@ def main():
     if file_paths:
         # Print file paths
         for file in file_paths:
-            print(file)
+            answer = answer_prompt(file, user_prompt)
+            print(answer)
+            break
     else:
         print("No files found")
 

@@ -42,12 +42,13 @@ def answer_prompt(file_path, user_prompt, max_token_length=3900):
     # Get prepend text
     prepend_prompt = config['DEFAULT'].get('PrependPrompt', '')
 
-    user_prompt = f"{prepend_prompt} {user_prompt}"
+    #user_prompt = f"{prepend_prompt} {user_prompt}"
     is_within_limit, user_prompt = check_token_length(user_prompt, max_token_length, 'gpt-3')
 
     if not is_within_limit:
         return "The content is too large to summarize."
 
-    response = generate_completion(f"{user_prompt}: ```{content}```")
+    final_prompt = f"{user_prompt} Answer the question based on the following: ```{content}```"
+    response = generate_completion(final_prompt)
 
     return response
