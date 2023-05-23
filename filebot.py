@@ -36,7 +36,8 @@ def main():
     if file_paths:
         # Print file paths
         for file in file_paths:
-            answer = answer_prompt(file, user_prompt)
+            stripped_file_path = re.sub(r'\.\d+$', '', file)
+            answer = answer_prompt(stripped_file_path, user_prompt)
             print(answer)
             break
     else:
