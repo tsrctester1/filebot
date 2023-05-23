@@ -39,6 +39,7 @@ def main():
             stripped_file_path = re.sub(r'\.\d+$', '', file)
             answer = answer_prompt(stripped_file_path, user_prompt)
             print(answer)
+            print(f"\n\nsource: {stripped_file_path}")
             break
     else:
         print("No files found")
