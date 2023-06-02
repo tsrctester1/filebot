@@ -11,7 +11,7 @@ def summarize_file(file_path, max_token_length=3000):
     with open(file_path, 'r') as file:
         content = file.read()
 
-    total_tokens = num_tokens_from_string(content, 'llm')
+    total_tokens = num_tokens_from_string(content, 'gpt-3')
 
     if total_tokens <= max_token_length:
         prompt = f"My task is to summarize the document. Here is the document:\n\n{content}"

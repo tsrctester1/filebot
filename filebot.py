@@ -31,6 +31,7 @@ def main():
     response = answer_user_prompt(relevant_info)
 
     # Extract file paths
+    print(response)
     file_paths = extract_file_paths(response)
 
     if file_paths:
