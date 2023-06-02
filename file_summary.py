@@ -32,6 +32,7 @@ def summarize_file(file_path, max_token_length=3000):
     return summaries
 
 # Modify the create_file_summaries function
+# Modify the create_file_summaries function
 def create_file_summaries(directory):
     """Walk through a directory and generate a summary for each file."""
     # Load existing summaries
@@ -45,7 +46,15 @@ def create_file_summaries(directory):
     is_updated = False
 
     for root, dirs, files in os.walk(directory):
+        # Skip directories named .gitignore
+        if ".git" in dirs:
+            dirs.remove(".git")
+
         for file in files:
+            # Skip files named .gitignore
+            if file == ".gitignore":
+                continue
+
             file_path = os.path.join(root, file)
             base_file_path, _ = os.path.splitext(file_path)
 
