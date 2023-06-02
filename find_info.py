@@ -33,14 +33,17 @@ def get_file_content(file_path):
 
     return content
 
-def answer_prompt(file_path, user_prompt, max_token_length=3900):
+def answer_prompt(file_path, user_prompt, max_token_length=3900, answer_type="non_final_answer"):
     content = get_file_content(file_path)
 
     config = configparser.ConfigParser()
     config.read('filebot.config')
 
     # Get prepend text
-    prepend_prompt = config['DEFAULT'].get('PrependPrompt', '')
+    if answer_type == "final_answer":
+        prepend_prompt = config['ANSWER'].get('PrependPrompt', '')
+    else:
+        prepend_prompt = config['DEFAULT'].get('PrependPrompt', '')
 
     #user_prompt = f"{prepend_prompt} {user_prompt}"
     is_within_limit, user_prompt = check_token_length(user_prompt, max_token_length, 'gpt-3')
