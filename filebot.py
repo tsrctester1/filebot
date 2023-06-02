@@ -16,7 +16,7 @@ def answer_user_prompt(relevant_info):
 # Extract file paths from response
 def extract_file_paths(response):
     """Extract file paths from the response using regular expressions."""
-    pattern = r"(/app/files\S*)'"
+    pattern = r"(/app/files\S*)`"
     file_paths = re.findall(pattern, response)
     return file_paths
 

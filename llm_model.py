@@ -12,7 +12,7 @@ def generate_completion(prompt, max_tokens=256, temperature=0.9):
   json_response = openai.ChatCompletion.create(
   model="gpt-3.5-turbo",
   messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "system", "content": "You are a helpful assistant and great at guessing what files may have info based on loose summaries of the files."},
         {"role": "user", "content": prompt},
     ]
   )
