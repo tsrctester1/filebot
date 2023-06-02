@@ -48,9 +48,7 @@ def answer_prompt(file_path, user_prompt, max_token_length=3900):
     if not is_within_limit:
         return "The content is too large to summarize."
 
-    final_prompt = f"{prepend_prompt}. Answer this prompt ```{user_prompt}```, based on the following info: ```{content}```"
-    print(final_prompt)
-    print("\n\n")
+    final_prompt = f"{prepend_prompt}. {user_prompt}, based on the following: ```{content}```"
     response = generate_completion(final_prompt, max_tokens=2500, temperature=0.8)
 
     return response
