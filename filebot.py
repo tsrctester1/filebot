@@ -23,7 +23,6 @@ def extract_file_paths(response):
 
 # Main function
 def main():
-    directory = '/app/files'
     config = configparser.ConfigParser()
     config.read('filebot.config')
     file_summaries_path = config['OPTIONS'].get('RelativeFileSummariesPath', '')

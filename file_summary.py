@@ -72,9 +72,9 @@ def create_file_summaries(directory, file_summaries_path):
                     # Set the flag to True when file_summaries.json is updated
                     is_updated = True
 
-    with open('file_summaries.json', 'w') as json_file:
+    with open(file_summaries_path, 'w') as json_file:
         json.dump(file_summaries, json_file, indent=4)
 
     # Notify the user if file_summaries.json is updated
     if is_updated:
-        print("file_summaries.json has been updated.")
+        print(f"{file_summaries_path} has been updated.")
