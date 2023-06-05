@@ -2,8 +2,8 @@ import os
 import json
 import time
 import math
-from token_counter import num_tokens_from_string
-from llm_model import generate_completion
+from .token_counter import num_tokens_from_string
+from .llm_model import generate_completion
 
 # Modify the summarize_file function
 def summarize_file(file_path, max_token_length=3000):

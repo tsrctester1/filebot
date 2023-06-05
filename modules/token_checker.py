@@ -1,5 +1,5 @@
 from typing import Tuple
-from token_counter import num_tokens_from_string
+from .token_counter import num_tokens_from_string
 
 def check_token_length(content: str, max_length: int, model: str) -> Tuple[bool, str]:
     """

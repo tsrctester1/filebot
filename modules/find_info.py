@@ -1,8 +1,8 @@
 import os
 import json
 import configparser
-from token_checker import check_token_length
-from llm_model import generate_completion
+from .token_checker import check_token_length
+from .llm_model import generate_completion
 
 def find_relevant_info(user_prompt, max_token_length=3900):
     # Read config file.

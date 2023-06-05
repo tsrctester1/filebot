@@ -1,9 +1,9 @@
 import json
 import re
 import configparser
-from file_summary import create_file_summaries
-from find_info import find_relevant_info
-from find_info import answer_prompt
+from modules.file_summary import create_file_summaries
+from modules.find_info import find_relevant_info
+from modules.find_info import answer_prompt
 
 # Answer user prompt
 def answer_user_prompt(relevant_info):
