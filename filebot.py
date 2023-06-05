@@ -17,7 +17,7 @@ def answer_user_prompt(relevant_info):
 # Extract file paths from response
 def extract_file_paths(response):
     """Extract file paths from the response using regular expressions."""
-    pattern = r"(/app/files\S*)`"
+    pattern = r"(filebot-store-000\S*)`"
     file_paths = re.findall(pattern, response)
     return file_paths
 
@@ -27,7 +27,8 @@ def main():
     config = configparser.ConfigParser()
     config.read('filebot.config')
     file_summaries_path = config['OPTIONS'].get('RelativeFileSummariesPath', '')
-    create_file_summaries(directory, file_summaries_path)
+    file_store_path = config['OPTIONS'].get('RelativeFileStorePath', '')
+    create_file_summaries(file_store_path, file_summaries_path)
 
     while True:
         user_prompt = input("\033[92mPrompt:\033[0m ")
