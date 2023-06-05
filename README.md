@@ -42,7 +42,7 @@ cd filebot
 2. **Put files in the file store**
 
 Put a directory of desired files in `file-store-00/`. For example:
-``
+```
 ├── filebot-store-000/
 │   ├── my-stuff/
 │   ├── my-code-project/
