@@ -39,6 +39,37 @@ git clone https://github.com/dOsan3/filebot
 cd filebot
 ```
 
+2. **Put files in the file store**
+
+Put a directory of desired files in `file-store-00/`. For example:
+``
+├── filebot-store-000/
+│   ├── my-stuff/
+│   ├── my-code-project/
+```
+
+
+2. **Create filebot.config**
+
+Filebot will only work against the specified directory in `filebot-store-00/`. You can change the directory in the `filebot.config`. Your `filebot.config` should look something like this.
+
+```
+[DEFAULT]
+PrependPrompt = "Give the the full file paths surrounded by backticks, such as `/apps/files/file.txt` And be generous with mispellings when I ask about things but don't warn me about it."
+
+[ANSWER]
+PrependPrompt = "Be generous with mispellings and match things phoenetically if needed when I ask about things,but don't warn me about it."
+
+[SUMMARY]
+PrependPrompt = "Be concise and do what is asked in one or 2 sentences. And also list a few few relevant key words from the doc in a seperate sentence."
+
+[OPTIONS]
+CaseSensitive = False
+MaxResults =
+RelativeFileSummariesPath = file_summaries.my-stuff.json
+RelativeFileStorePath = filebot-store-000/my-stuff
+```
+
 2. **Build the Docker Image**
 
 ```
@@ -60,6 +91,21 @@ Be sure to replace `/path/to/your/files` with the path to the directory that con
 ## Usage
 
 Once you've started the Docker container, the application will ask you to enter a search term. After you've entered a term, the application will print a response with the paths of the files that contain the term. If no files contain the term, the application will inform you that no relevant files were found.
+
+You can have multiple file stores. Simply provide the paths where you want the file_summaries to be and the location of the individual file store. All files stores must be in the `filebot-store-00` directory. Its highly recommened that you seperate file stores as the file summaries must fit into the context of the llm model, which has a token limit.
+
+```
+[OPTIONS]
+RelativeFileSummariesPath = file_summaries.my-stuff.json
+RelativeFileStorePath = filebot-store-000/my-stuff
+```
+Example of filebot.config option for `my-code-project` directory.
+
+```
+[OPTIONS]
+RelativeFileSummariesPath = file_summaries.my-code-project.json
+RelativeFileStorePath = filebot-store-000/my-code-project
+```
 
 - [x] Find relevant files based on text matches in file summary.
 - [x] Modify summaries on detection of new file on prompt search.
