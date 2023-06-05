@@ -21,7 +21,29 @@ def extract_file_paths(response):
     file_paths = re.findall(pattern, response)
     return file_paths
 
-# Main function
+import json
+import re
+import configparser
+from modules.file_summary import create_file_summaries
+from modules.find_info import find_relevant_info
+from modules.find_info import answer_prompt
+
+# Answer user prompt
+def answer_user_prompt(relevant_info):
+    """Generate a response to the user's prompt based on the relevant info."""
+    if not relevant_info:
+        return "I'm sorry, I couldn't find any relevant files to answer your question. Please rephrase or try another search."
+    else:
+        response = "Answer: {}".format(relevant_info)
+        return response
+
+# Extract file paths from response
+def extract_file_paths(response):
+    """Extract file paths from the response using regular expressions."""
+    pattern = r"(filebot-store-000\S*)`"
+    file_paths = re.findall(pattern, response)
+    return file_paths
+
 def main():
     config = configparser.ConfigParser()
     config.read('filebot.config')
@@ -39,14 +61,27 @@ def main():
         file_paths = extract_file_paths(response)
 
         if file_paths:
-            # Print file paths
-            for file in file_paths:
+            # Present all file paths to the user
+            print("\nFound the following relevant files:")
+            for index, file in enumerate(file_paths, start=1):
                 stripped_file_path = re.sub(r'\.\d+$', '', file)
-                answer = answer_prompt(stripped_file_path, user_prompt, answer_type='final_answer')
-                print(f"\n\n{answer}")
-                print(f"\033[1;97m\nsource: {stripped_file_path}\033[0m")
-                print("\n\n")
-                break
+                print(f"{index}. {stripped_file_path}")
+            print("")
+
+            # Ask the user to select a file
+            selected_index = int(input("Please select a file by typing its number: ")) - 1
+
+            # Ensure valid selection
+            if selected_index < 0 or selected_index >= len(file_paths):
+                print("\033[38;5;208mInvalid selection\033[0m")
+                continue
+
+            # Use the selected file
+            selected_file = re.sub(r'\.\d+$', '', file_paths[selected_index])
+            answer = answer_prompt(selected_file, user_prompt, answer_type='final_answer')
+            print(f"\n\n{answer}")
+            print(f"\033[1;97m\nsource: {selected_file}\033[0m")
+            print("\n\n")
         else:
             print(f"\033[38;5;208mNo files found\033[0m\n\n{response}")
 
