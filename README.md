@@ -75,16 +75,23 @@ Here's a brief explanation of the role of each file/directory:
 ```
 ├── Dockerfile
 ├── filebot.py
-├── files/
-├── file_summaries.json
-├── file_summary.py
-├── find_info.py
+├── modules
+│   ├── file_summary.py
+│   ├── find_info.py
+│   ├── llm_model.py
+│   ├── token_checker.py
+│   ├── token_counter.py
+│   ├── __init__.py
+│   ├── llm_model.py
+│   ├── __pycache__
+├── files-store-00/
+├── filbot.config
 ├── openai_api_key
 ├── README.md
 ├── requirements.txt
-├── token_checker.py
-├── token_counter.py
 ```
+
+It will gener
 
 **Dockerfile**: This file is used by Docker to build a Docker image for the application. It contains instructions for how the Docker image should be built.
 
