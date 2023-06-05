@@ -33,11 +33,11 @@ def summarize_file(file_path, max_token_length=3000):
 
 # Modify the create_file_summaries function
 # Modify the create_file_summaries function
-def create_file_summaries(directory):
+def create_file_summaries(directory, file_summaries_path):
     """Walk through a directory and generate a summary for each file."""
     # Load existing summaries
     try:
-        with open('file_summaries.json', 'r') as json_file:
+        with open(file_summaries_path, 'r') as json_file:
             file_summaries = json.load(json_file)
     except FileNotFoundError:
         file_summaries = {}

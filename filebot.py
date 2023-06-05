@@ -1,5 +1,6 @@
 import json
 import re
+import configparser
 from file_summary import create_file_summaries
 from find_info import find_relevant_info
 from find_info import answer_prompt
@@ -23,7 +24,10 @@ def extract_file_paths(response):
 # Main function
 def main():
     directory = '/app/files'
-    create_file_summaries(directory)
+    config = configparser.ConfigParser()
+    config.read('filebot.config')
+    file_summaries_path = config['OPTIONS'].get('RelativeFileSummariesPath', '')
+    create_file_summaries(directory, file_summaries_path)
 
     while True:
         user_prompt = input("\033[92mPrompt:\033[0m ")
