@@ -44,7 +44,7 @@ def main():
                 print("\n\n")
                 break
         else:
-            print("\033[38;5;208mNo files found\033[0m")
+            print(f"\033[38;5;208mNo files found\033[0m\n\n{response}")
 
 if __name__ == '__main__':
     main()

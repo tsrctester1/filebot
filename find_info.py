@@ -23,7 +23,6 @@ def find_relevant_info(user_prompt, max_token_length=3900):
         return "The content is too large to summarize."
 
     response = generate_completion(user_prompt)
-    print(response)
 
     return response
 
