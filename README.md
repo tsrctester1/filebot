@@ -24,7 +24,6 @@ Please note that FileBot is currently in the early stages of development and doe
 
 - The project currently only supports text files. Other types of files (like PDFs or Word documents) are not supported.
 - The project does not yet support breaking up files that exceed a certain size or token limit.
-- The project currently only outputs the paths of relevant files, but does not provide specific information or answers from these files.
 - The project is currently limited by the token limit of OpenAI's API, which affects the volume of text that can be processed in a single request. This primarily impacts how it can work with a large file and how many file summaries it can work with, as the entire file summaries and the user prompt must fit within this limit. However, with appropriate strategies and techniques, FileBot could be scaled to handle larger files or a larger number of files (contributions and ideas are welcome!).
 
 Future updates will aim to address these limitations and add new functionality to the project.
