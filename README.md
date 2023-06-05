@@ -51,8 +51,10 @@ docker build -t filebot .
 After the image is built, you can run your application with the following command:
 
 ```
-docker run -it -v /path/to/your/files:/app/files filebot
+docker run -it -v /path/to/filebot/:/app/ -u $(id -u):$(id -g) filebot
 ```
+
+The `-u $(id -u):$(id -g)` option allows the container to inherit your host file write permissions so that any file summaries it creates or updates is available to the host.
 
 Be sure to replace `/path/to/your/files` with the path to the directory that contains the files you want to search. This will make the directory accessible inside the Docker container.
 
@@ -83,7 +85,6 @@ Here's a brief explanation of the role of each file/directory:
 │   ├── token_counter.py
 │   ├── __init__.py
 │   ├── llm_model.py
-│   ├── __pycache__
 ├── files-store-00/
 ├── filbot.config
 ├── openai_api_key
@@ -91,17 +92,17 @@ Here's a brief explanation of the role of each file/directory:
 ├── requirements.txt
 ```
 
-It will gener
-
 **Dockerfile**: This file is used by Docker to build a Docker image for the application. It contains instructions for how the Docker image should be built.
 
 **filebot.py**: This is the main script of the application. It uses functions from file_summary.py and find_info.py to generate file summaries and find relevant information based on user prompts.
 
-**files/**: This directory contains the files that the application will process and summarize.
+**filebot-store-00/**: This directory contains the files that the application will process and summarize.
 
 **file_summaries.json**: This file stores the summaries of each file processed by the application.
 
 **find_info.py**: This script contains the functions used for retrieving and presenting information relevant to the user's prompt. It includes functions to search the file summaries for the user's prompt, to read the relevant files.
+
+**llm_model.py**: This script contains the functions used to make requests to the llm model, such as gpt-3.
 
 **token_checker.py**: This script contains a function to check whether the token count of a string (in this case, a file's content) is within a specified limit. This is used to ensure that the content sent to the OpenAI API doesn't exceed the maximum token limit.
 
