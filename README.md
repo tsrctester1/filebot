@@ -51,7 +51,7 @@ Put a directory of desired files in `file-store-00/`. For example:
 
 2. **Create filebot.config**
 
-Filebot will only work against the specified directory in `filebot-store-00/`. You can change the directory in the `filebot.config`. Your `filebot.config` should look something like this.
+Filebot will only work against the specified folder in `filebot-store-00/`. You can change the folder you want filebot to work against in the `filebot.config`. It is highly recommended to have related files in a single folder. Your `filebot.config` should look something like this.
 
 ```
 [DEFAULT]
