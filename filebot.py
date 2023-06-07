@@ -69,7 +69,13 @@ def main():
             print("")
 
             # Ask the user to select a file
-            selected_index = int(input("Please select a file by typing its number: ")) - 1
+            file_choice = input("Please select a file by typing its number or press 'Enter' to skip: ")
+
+            # If the user presses 'Enter' without choosing a file, skip to the next prompt
+            if file_choice.strip() == '':
+                continue
+
+            selected_index = int(file_choice) - 1
 
             # Ensure valid selection
             if selected_index < 0 or selected_index >= len(file_paths):
