@@ -39,8 +39,8 @@ def answer_user_prompt(relevant_info):
 
 # Extract file paths from response
 def extract_file_paths(response):
-    """Extract file paths from the response using regular expressions."""
-    pattern = r"(filebot-store-000\S*)`"
+    """Extract file paths from the response using regulpattern = r"(filebot-store-000[^\n]*?)(?=[`'\"]?\n|$)"ar expressions."""
+    pattern = r"\[(.*?)\]"
     file_paths = re.findall(pattern, response)
     return file_paths
 
