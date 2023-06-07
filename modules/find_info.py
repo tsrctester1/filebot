@@ -20,7 +20,7 @@ def find_relevant_info(user_prompt, max_token_length=3900):
     prepend_prompt = config['DEFAULT'].get('PrependPrompt', '')
 
 
-    user_prompt = f"{prepend_prompt}. Based on the following summaries```{file_summaries}``` which file or files based on the summaries should we open to see if it has any info regarding. List the most promising files first. Prepend and append a bracket to each filepath.: ```{user_prompt}```"
+    user_prompt = f"{prepend_prompt}. Based on the following summaries```{file_summaries}``` which file or files based on the summaries should we open to see if it has any info regarding. List the most promising files first. Prepend and append a bracket to each filepath given like this `[filebot-store-00/file/path]`: ```{user_prompt}```"
     is_within_limit, user_prompt = check_token_length(user_prompt, max_token_length, 'gpt-3')
 
     if not is_within_limit:
