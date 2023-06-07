@@ -68,26 +68,28 @@ def main():
                 print(f"{index}. {stripped_file_path}")
             print("")
 
-            # Ask the user to select a file
-            file_choice = input("Please select a file by typing its number or press 'Enter' to skip: ")
+            while True:
+                # Ask the user to select a file
+                file_choice = input("Please select a file by typing its number or press 'Enter' to skip or select another: ")
 
-            # If the user presses 'Enter' without choosing a file, skip to the next prompt
-            if file_choice.strip() == '':
-                continue
+                # If the user presses 'Enter' without choosing a file, break to outer loop
+                if file_choice.strip() == '':
+                    break
 
-            selected_index = int(file_choice) - 1
+                selected_index = int(file_choice) - 1
 
-            # Ensure valid selection
-            if selected_index < 0 or selected_index >= len(file_paths):
-                print("\033[38;5;208mInvalid selection\033[0m")
-                continue
+                # Ensure valid selection
+                if selected_index < 0 or selected_index >= len(file_paths):
+                    print("\033[38;5;208mInvalid selection\033[0m")
+                    continue
 
-            # Use the selected file
-            selected_file = re.sub(r'\.\d+$', '', file_paths[selected_index])
-            answer = answer_prompt(selected_file, user_prompt, answer_type='final_answer')
-            print(f"\n\n{answer}")
-            print(f"\033[1;97m\nsource: {selected_file}\033[0m")
-            print("\n\n")
+                # Use the selected file
+                selected_file = re.sub(r'\.\d+$', '', file_paths[selected_index])
+                answer = answer_prompt(selected_file, user_prompt, answer_type='final_answer')
+                print(f"\n\n{answer}")
+                print(f"\033[1;97m\nsource: {selected_file}\033[0m")
+                print("\n\n")
+
         else:
             print(f"\033[38;5;208mNo files found\033[0m\n\n{response}")
 
