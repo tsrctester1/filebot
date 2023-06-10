@@ -2,3 +2,4 @@ filebot-store-00/
 model/
 openai_api_key
 __pycache__
+names_and_aliases.csv
