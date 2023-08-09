@@ -5,6 +5,26 @@ import math
 from .token_counter import num_tokens_from_string
 from .llm_model import generate_completion
 
+def get_summary_instruction(config_path):
+    """Parse the config file and get SUMMARY instruction."""
+    with open(config_path, 'r') as file:
+        lines = file.readlines()
+
+    # Find the SUMMARY section
+    try:
+        start_index = lines.index("[SUMMARY]\n")
+    except ValueError:
+        return ""
+
+    for line in lines[start_index:]:
+        if line.startswith("PrependPrompt = "):
+            # Return the instruction after removing the 'PrependPrompt = ' and trimming the quotes
+            return line.replace("PrependPrompt = ", "").strip().strip('"')
+
+    return ""
+
+summary_instruction = get_summary_instruction("path_to_filebot.config")
+
 # Modify the summarize_file function
 def summarize_file(file_path, max_token_length=3000):
     """Read a file and return a summary."""
@@ -14,7 +34,7 @@ def summarize_file(file_path, max_token_length=3000):
     total_tokens = num_tokens_from_string(content, 'gpt-3')
 
     if total_tokens <= max_token_length:
-        prompt = f"My task is to summarize the document. Here is the document:\n\n{content}"
+        prompt = f"{summary_instruction} Here is the document:\n\n{content}"
 
         summary = generate_completion(prompt)
         return [(file_path, summary)]
@@ -24,14 +44,13 @@ def summarize_file(file_path, max_token_length=3000):
     for i in range(0, total_tokens, max_token_length):
         print(f"llm summary request {i}")
         chunk = content[i: i + max_token_length]
-        prompt = f"My task is to summarize the document. Here is the document:\n\n{chunk}"
+        prompt = f"{summary_instruction} Here is the document:\n\n{chunk}"
 
         summary = generate_completion(prompt)
         summaries.append((f"{file_path}.{i//max_token_length}", summary))
 
     return summaries
 
-# Modify the create_file_summaries function
 # Modify the create_file_summaries function
 def create_file_summaries(directory, file_summaries_path):
     """Walk through a directory and generate a summary for each file."""
