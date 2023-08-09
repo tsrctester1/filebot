@@ -1,11 +1,21 @@
-filebot vs rosarygpt vs bing chatgpt
+# filebot vs {{{dominicAI}}} vs bing vs chatgpt
 
-|                                         | filebot  | rosarygpt | bingChat  | chatgpt   |
-|-----------------------------------------|----------|-----------|-----------|-----------|
-| Canonical answer from a limited set of documents |          |           |           |           |
-| General knowledge                       |          |           |           |           |
-| Current knowledge                       |          |           |           |           |
-| Sources                                 |          |           |           |           |
+Ranking by intention (e.g. I want to solve a basic math problem, I would use chatgpt, even though bing chat could do it, but there is a risk it could go into 'source' mode and base on a documents retrieved.)`
+
+```
+|                   | filebot        | {{{dominicAI}}}    | bingChat       | chatgpt         |
+|-------------------|----------------|------------------|----------------|-----------------|
+| Canonical answers | extensive      | limited          | moderate       | none            |
+| General knowledge | limited        | extensive        | extensive      | very extensive  |
+| Current knowledge | very extensive | extensive        | extensive      | minimal         |
+| Gives source      | extensive      | none             | extensive      | none            |
+| Multi-dimensional | limited        | very extensive?  | extensive      | very extensive  |
+
+```
+
+***General knowledge very extensive***
+
+Training LLM
 
 ### How can I follow a prayerful life?
 
@@ -28,7 +38,7 @@ Source: Conversation with Bing, 8/8/2023
 (4) undefined. https://bing.com/search?q=.
 ```
 
-**RosaryGPT**
+**{{{dominicAI}}}**
 
 ```
 Greetings! Thank you for seeking guidance on how to lead a prayerful life. As a faithful Catholic, I can offer you some suggestions based on our teachings and traditions.
@@ -66,7 +76,7 @@ Source: Conversation with Bing, 8/8/2023
 (8) undefined. https://www.schooloffaith.com/pray-th.
 ```
 
-**RosaryGPT**
+**{{{dominicAI}}}**
 
 ```
 Hmm, I am not sure of a specific YouTube video that specifically explains the relation between the Joyful Rosary and the Transfiguration. However, I can recommend searching for Catholic channels or organizations that provide teachings on the Rosary and the Transfiguration. They may have videos or talks that explore the connections between these two aspects of our faith.
@@ -76,4 +86,30 @@ One channel that you may find helpful is "The Rosary Network" on YouTube. They o
 Remember to discern the sources you come across and ensure they align with the teachings of the Catholic Church. It is always beneficial to seek guidance from trusted Catholic resources and authorities.
 
 May your search for understanding be fruitful, and may God bless you on your spiritual journey. Is there anything else I can assist you with?
+```
+
+### What is the #1 Daily Rosary Podcast
+
+**Bing chat**
+
+```
+The #1 Daily Rosary Podcast is the "Daily Rosary Meditations" podcast³. It is a podcast that helps you learn how to meditate and establish a daily habit of prayer while discovering the truths of the Catholic Faith. You can join them every morning for Scripture, meditation, and a Rosary - all under 25 minutes! It's perfect for your daily commute or morning coffee listening³. I hope this helps! 😊
+
+Source: Conversation with Bing, 8/8/2023
+(1) Daily Rosary Meditations. https://www.dailyrosarymeditations.com/.
+(2) Daily Rosary Meditations - Learn to Pray the Rosary on the Best .... https://www.dailyrosary.net/.
+(3) Podcast | {{{DominicNetwork}}}.com. https://{{{DominicNetwork}}}.com/podcasts/.
+(4) undefined. https://bing.com/search?q=.
+```
+
+**{{{dominicAI}}}**
+
+```
+Ah, the #1 Daily Rosary Podcast! It is a blessed initiative called The Rosary Network. This podcast, led by faithful Catholic laypeople, offers a daily recitation of the Holy Rosary for listeners to join in prayer. It is available on popular platforms such as Apple Podcasts, Spotify, Google Podcasts, and more.
+
+The Rosary Network's podcast has gained a significant following, reaching faithful Rosarians in over 125 countries, including the 50 states of the United States. Through the power of technology, this podcast allows individuals from around the world to come together in prayer, seeking the intercession of the Blessed Virgin Mary and the graces that flow from the Rosary.
+
+By participating in this daily Rosary podcast, listeners can deepen their prayer life, experience the joy and hope that come from praying the Rosary, and join a global community of faithful believers. It is a beautiful way to unite in prayer and seek the intercession of Our Lady for personal intentions and the needs of the world.
+
+If you are interested in joining this #1 Daily Rosary Podcast, I encourage you to visit their website or search for "The Rosary Network" on your preferred podcast platform. May the Rosary be a source of grace and blessings in your life. Is there anything else I can assist you with?
 ```
