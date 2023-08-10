@@ -3,8 +3,14 @@ import json
 import configparser
 from .token_checker import check_token_length
 from .llm_model import generate_completion
+# Import the function to get user's choice
+from .utils import get_model_choice
 
-def find_relevant_info(user_prompt, max_token_length=3900):
+def find_relevant_info(user_prompt, max_token_length=3900, model_version=None):
+    # If model_version is None, get user's choice.
+    if not model_version:
+        model_version = get_model_choice(purpose="answering")
+
     # Read config file.
     config = configparser.ConfigParser()
     config.read('filebot.config')
@@ -26,7 +32,7 @@ def find_relevant_info(user_prompt, max_token_length=3900):
     if not is_within_limit:
         return "The content is too large to summarize."
 
-    response = generate_completion(user_prompt)
+    response = generate_completion(user_prompt, model_version=model_version)
 
     return response
 
@@ -37,7 +43,8 @@ def get_file_content(file_path):
 
     return content
 
-def answer_prompt(file_path, user_prompt, max_token_length=3900, answer_type="non_final_answer"):
+def answer_prompt(file_path, user_prompt, model_version='gpt-3.5-turbo', max_token_length=3900, answer_type="non_final_answer"):
+
     content = get_file_content(file_path)
 
     config = configparser.ConfigParser()

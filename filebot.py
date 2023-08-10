@@ -2,8 +2,9 @@ import json
 import re
 import configparser
 from modules.file_summary import create_file_summaries
-from modules.find_info import find_relevant_info
-from modules.find_info import answer_prompt
+from modules.find_info import find_relevant_info, answer_prompt
+from modules.utils import create_file_summary_prompt, get_model_choice
+
 
 # Answer user prompt
 def answer_user_prompt(relevant_info):
@@ -17,29 +18,6 @@ def answer_user_prompt(relevant_info):
 # Extract file paths from response
 def extract_file_paths(response):
     """Extract file paths from the response using regular expressions."""
-    pattern = r"(filebot-store-000\S*)`"
-    file_paths = re.findall(pattern, response)
-    return file_paths
-
-import json
-import re
-import configparser
-from modules.file_summary import create_file_summaries
-from modules.find_info import find_relevant_info
-from modules.find_info import answer_prompt
-
-# Answer user prompt
-def answer_user_prompt(relevant_info):
-    """Generate a response to the user's prompt based on the relevant info."""
-    if not relevant_info:
-        return "I'm sorry, I couldn't find any relevant files to answer your question. Please rephrase or try another search."
-    else:
-        response = "Answer: {}".format(relevant_info)
-        return response
-
-# Extract file paths from response
-def extract_file_paths(response):
-    """Extract file paths from the response using regulpattern = r"(filebot-store-000[^\n]*?)(?=[`'\"]?\n|$)"ar expressions."""
     pattern = r"\[(.*?)\]"
     file_paths = re.findall(pattern, response)
     return file_paths
@@ -49,7 +27,13 @@ def main():
     config.read('filebot.config')
     file_summaries_path = config['OPTIONS'].get('RelativeFileSummariesPath', '')
     file_store_path = config['OPTIONS'].get('RelativeFileStorePath', '')
-    create_file_summaries(file_store_path, file_summaries_path)
+
+    # Check if there's a need to summarize any files first
+    need_to_summarize = create_file_summaries(file_store_path, file_summaries_path, None)
+
+    if need_to_summarize:
+        model_choice = get_model_choice(purpose="summarizing")
+        create_file_summaries(file_store_path, file_summaries_path, model_choice)
 
     while True:
         user_prompt = input("\033[92mPrompt:\033[0m ")
@@ -85,7 +69,8 @@ def main():
 
                 # Use the selected file
                 selected_file = re.sub(r'\.\d+$', '', file_paths[selected_index])
-                answer = answer_prompt(selected_file, user_prompt, answer_type='final_answer')
+                prompt_for_file = create_file_summary_prompt(selected_file)
+                answer = answer_prompt(selected_file, prompt_for_file, answer_type='final_answer')
                 print(f"\n\n{answer}")
                 print(f"\033[1;97m\nsource: {selected_file}\033[0m")
                 print("\n\n")
