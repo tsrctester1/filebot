@@ -23,7 +23,7 @@ def get_summary_instruction(config_path):
 
     return ""
 
-summary_instruction = get_summary_instruction("path_to_filebot.config")
+summary_instruction = get_summary_instruction("./filebot.config")
 
 # Modify the summarize_file function
 def summarize_file(file_path, max_token_length=3000):
