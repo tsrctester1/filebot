@@ -1,6 +1,7 @@
 import json
 import re
 import configparser
+import argparse
 from modules.file_summary import create_file_summaries
 from modules.find_info import find_relevant_info
 from modules.find_info import answer_prompt
@@ -45,6 +46,11 @@ def extract_file_paths(response):
     return file_paths
 
 def main():
+    parser = argparse.ArgumentParser(description='Run filebot with the specified model.')
+    parser.add_argument('--model', type=str, default="gpt3.5-turbo", help='Which model to use: gpt4 or gpt3.5-turbo (default is gpt3.5-turbo)')
+    args = parser.parse_args()
+    model_name = args.model
+
     config = configparser.ConfigParser()
     config.read('filebot.config')
     file_summaries_path = config['OPTIONS'].get('RelativeFileSummariesPath', '')

@@ -26,7 +26,7 @@ def get_summary_instruction(config_path):
 summary_instruction = get_summary_instruction("./filebot.config")
 
 # Modify the summarize_file function
-def summarize_file(file_path, max_token_length=3000):
+def summarize_file(file_path, model_name="gpt3.5-turbo", max_token_length=3000):
     """Read a file and return a summary."""
     with open(file_path, 'r') as file:
         content = file.read()
@@ -36,7 +36,7 @@ def summarize_file(file_path, max_token_length=3000):
     if total_tokens <= max_token_length:
         prompt = f"{summary_instruction} Here is the document:\n\n{content}"
 
-        summary = generate_completion(prompt)
+        summary = generate_completion(prompt, model_name=model_name)
         return [(file_path, summary)]
 
     # content exceeds max_token_length
@@ -46,13 +46,16 @@ def summarize_file(file_path, max_token_length=3000):
         chunk = content[i: i + max_token_length]
         prompt = f"{summary_instruction} Here is the document:\n\n{chunk}"
 
-        summary = generate_completion(prompt)
+        summary = generate_completion(prompt, model_name=model_name)
         summaries.append((f"{file_path}.{i//max_token_length}", summary))
 
     return summaries
 
 # Modify the create_file_summaries function
-def create_file_summaries(directory, file_summaries_path):
+def create_file_summaries(directory, file_summaries_path, model_name="gpt3.5-turbo"):
+    ...
+    ...
+
     """Walk through a directory and generate a summary for each file."""
     # Load existing summaries
     try:
@@ -81,7 +84,7 @@ def create_file_summaries(directory, file_summaries_path):
             if all(not key.startswith(base_file_path) for key in file_summaries.keys()) or \
             any(file_summaries[key]['mtime'] < os.path.getmtime(file_path) for key in file_summaries.keys() if key.startswith(base_file_path)):
                 print(f"New or updated file detected: '{file_path}'")
-                summaries = summarize_file(file_path)
+                summaries = summarize_file(file_path, model_name=model_name)
                 if summaries:
                     for path, summary in summaries:
                         file_summaries[path] = {
