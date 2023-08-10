@@ -26,7 +26,7 @@ def get_summary_instruction(config_path):
 summary_instruction = get_summary_instruction("./filebot.config")
 
 # Modify the summarize_file function
-def summarize_file(file_path, model_name="gpt3.5-turbo", max_token_length=3000):
+def summarize_file(file_path, model_name="gpt-3.5-turbo", max_token_length=3000):
     """Read a file and return a summary."""
     with open(file_path, 'r') as file:
         content = file.read()
@@ -52,7 +52,7 @@ def summarize_file(file_path, model_name="gpt3.5-turbo", max_token_length=3000):
     return summaries
 
 # Modify the create_file_summaries function
-def create_file_summaries(directory, file_summaries_path, model_name="gpt3.5-turbo"):
+def create_file_summaries(directory, file_summaries_path, model_name="gpt-3.5-turbo"):
     ...
     ...
 
