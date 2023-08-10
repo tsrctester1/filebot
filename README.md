@@ -84,6 +84,13 @@ After the image is built, you can run your application with the following comman
 docker run -it -v /path/to/filebot/:/app/ -u $(id -u):$(id -g) filebot
 ```
 
+Optionally, you may run gpt4. Please be aware that it many times more expensive in price per token than gpt-3.5-turbo.
+
+```
+docker run -it -v /home/david/projects/filebot/:/app/ -u $(id -u):$(id -g) filebot python filebot.py --model gpt4
+```
+Note that `python filebot.py` is now explicit in the command to override `CMD` in Dockerfile to allow for passing in the optional argument.
+
 The `-u $(id -u):$(id -g)` option allows the container to inherit your host file write permissions so that any file summaries it creates or updates is available to the host.
 
 Be sure to replace `/path/to/your/files` with the path to the directory that contains the files you want to search. This will make the directory accessible inside the Docker container.
