@@ -27,6 +27,11 @@ def summarize_file(file_path, model_choice=None, max_token_length=3000):
 
     total_tokens = num_tokens_from_string(content, 'gpt-3')
 
+        # Replace this check with a warning or an exception
+    if not model_choice:
+        print("Warning: No model choice provided for summarization!")
+        model_choice = "gpt-3-turbo"  # default to gpt-3-turbo or throw an exception
+
     if total_tokens <= max_token_length:
         prompt = f"{summary_instruction} Here is the document:\n\n{content}"
         summary = generate_completion(prompt, model_version=model_choice)
