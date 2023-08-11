@@ -128,14 +128,6 @@ Also add an `./openai_api_key` file.
 YOUR_OPENAI_API_KEY
 ```
 
-- [x] Find relevant files based on text matches in file summary.
-- [x] Modify summaries on detection of new file on prompt search.
-- [x] File summaries generated via OpenAI GPT-3 API.
-- [x] User can ask for relevant files based on entire file summaries.
-- [ ] Drop in any small LLM or OpenAI API compatible service.
-- [ ] Support pdf files.
-- [ ] Support a variety of other common file types.
-
 ## How it works
 
 Here's a brief explanation of the role of each file/directory:
@@ -176,8 +168,14 @@ Here's a brief explanation of the role of each file/directory:
 
 ## Aspirations
 
-- [ ] Answer prompt based on up to 3 top ranked documents.
-
+- [x] Find relevant files based on text matches in file summary.
+- [x] Modify summaries on detection of new file on prompt search.
+- [x] File summaries generated via OpenAI GPT-3 API.
+- [x] User can ask for relevant files based on entire file summaries.
+- [x] Optional OpenAI GPT-4 API.
 - [ ] Add keywords field to file_summaries.json
-
 - [ ] Implement file anonymization strategies when sending data to OpenAI or similar platforms.
+- [ ] Answer prompt based on up to 3 top ranked documents.
+- [ ] Drop in any small LLM or OpenAI API compatible service.
+- [ ] Support pdf files.
+- [ ] Support a variety of other common file types.
