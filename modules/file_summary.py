@@ -23,8 +23,6 @@ def get_summary_instruction(config_path):
 
     return ""
 
-summary_instruction = get_summary_instruction("./filebot.config")
-
 # Modify the summarize_file function
 def summarize_file(file_path, model_name="gpt-3.5-turbo", max_token_length=3000):
     """Read a file and return a summary."""
@@ -32,6 +30,7 @@ def summarize_file(file_path, model_name="gpt-3.5-turbo", max_token_length=3000)
         content = file.read()
 
     total_tokens = num_tokens_from_string(content, 'gpt-3')
+    summary_instruction = get_summary_instruction("./filebot.config")
 
     if total_tokens <= max_token_length:
         prompt = f"{summary_instruction} Here is the document:\n\n{content}"
