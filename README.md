@@ -103,17 +103,29 @@ Once you've started the Docker container, the application will ask you to enter 
 
 You can have multiple file stores. Simply provide the paths where you want the file_summaries to be and the location of the individual file store. All files stores must be in the `filebot-store-000` directory. Its highly recommened that you seperate file stores as the file summaries must fit into the context of the llm model, which has a token limit.
 
+Example of filebot.config option for `my-code-project` directory. `file_summaries` json file doesn't need to exist - it just specifies what it will be called when filebot creates it.
+
 ```
+[DEFAULT]
+PrependPrompt = "Be generous with mispellings when I ask about things but don't warn me about it."
+
+[ANSWER]
+PrependPrompt = "Be generous with mispellings and match things phoenetically if needed when I ask about things,but don't warn me about it."
+
+[SUMMARY]
+PrependPrompt = "Summarize the purpose of this file. Be concise and do what is asked in no more than 3 sentences."
+
 [OPTIONS]
+CaseSensitive = False
+MaxResults =
 RelativeFileSummariesPath = file_summaries.my-stuff.json
 RelativeFileStorePath = filebot-store-000/my-stuff
 ```
-Example of filebot.config option for `my-code-project` directory.
+
+Also add an `./openai_api_key` file.
 
 ```
-[OPTIONS]
-RelativeFileSummariesPath = file_summaries.my-code-project.json
-RelativeFileStorePath = filebot-store-000/my-code-project
+YOUR_OPENAI_API_KEY
 ```
 
 - [x] Find relevant files based on text matches in file summary.
