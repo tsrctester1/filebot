@@ -4,6 +4,8 @@
 
 FileBot is a Python-based project designed to be a stand-alone utility or a service to other bots or tools to help answer user prompts based on the content of specified files. It works by summarizing the contents of files, identifying relevant files based on a user prompt, and then returning a response with the paths of the relevant files.
 
+If you're using for coding, it's best to use it against documentation files. Working on somethings to make it work off of straight code files, but it's a longshot!
+
 ***It does NOT retreive files from searches against a vector database. It's LLMs all the way down!***
 
 This project can be highly useful for managing and retrieving information from large numbers of text files or documents. For example, you could use it to find contracts that contain certain terms, list reports that mention specific events, or retrieve articles that discuss particular topics.
@@ -55,13 +57,13 @@ Filebot will only work against the specified folder in `filebot-store-00/`. You 
 
 ```
 [DEFAULT]
-PrependPrompt = "Give the the full file paths surrounded by backticks, such as `/apps/files/file.txt` And be generous with mispellings when I ask about things but don't warn me about it."
+PrependPrompt = "Be generous with mispellings when I ask about things but don't warn me about it."
 
 [ANSWER]
 PrependPrompt = "Be generous with mispellings and match things phoenetically if needed when I ask about things,but don't warn me about it."
 
 [SUMMARY]
-PrependPrompt = "Be concise and do what is asked in one or 2 sentences. And also list a few few relevant key words from the doc in a seperate sentence."
+PrependPrompt = "Summarize the purpose of this file. Be concise and do what is asked in no more than 3 sentences."
 
 [OPTIONS]
 CaseSensitive = False
@@ -159,3 +161,11 @@ Here's a brief explanation of the role of each file/directory:
 **token_checker.py**: This script contains a function to check whether the token count of a string (in this case, a file's content) is within a specified limit. This is used to ensure that the content sent to the OpenAI API doesn't exceed the maximum token limit.
 
 **token_counter.py**: This script contains a function that counts the number of tokens in a string. It is used by the token_checker.py script to determine whether a file's content is within the OpenAI API's token limit.
+
+## Aspirations
+
+- [ ] Answer prompt based on up to 3 top ranked documents.
+
+- [ ] Add keywords field to file_summaries.json
+
+- [ ] Implement file anonymization strategies when sending data to OpenAI or similar platforms.
