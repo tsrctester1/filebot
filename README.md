@@ -43,7 +43,7 @@ cd filebot
 
 2. **Put files in the file store**
 
-Put a directory of desired files in `file-store-00/`. For example:
+Put a directory of desired files in `file-store-000/`. For example:
 ```
 ├── filebot-store-000/
 │   ├── my-stuff/
@@ -53,7 +53,7 @@ Put a directory of desired files in `file-store-00/`. For example:
 
 2. **Create filebot.config**
 
-Filebot will only work against the specified folder in `filebot-store-00/`. You can change the folder you want filebot to work against in the `filebot.config`. It is highly recommended to have related files in a single folder. Your `filebot.config` should look something like this.
+Filebot will only work against the specified folder in `filebot-store-000/`. You can change the folder you want filebot to work against in the `filebot.config`. It is highly recommended to have related files in a single folder. Your `filebot.config` should look something like this.
 
 ```
 [DEFAULT]
@@ -101,7 +101,7 @@ Be sure to replace `/path/to/your/files` with the path to the directory that con
 
 Once you've started the Docker container, the application will ask you to enter a search term. After you've entered a term, the application will print a response with the paths of the files that contain the term. If no files contain the term, the application will inform you that no relevant files were found.
 
-You can have multiple file stores. Simply provide the paths where you want the file_summaries to be and the location of the individual file store. All files stores must be in the `filebot-store-00` directory. Its highly recommened that you seperate file stores as the file summaries must fit into the context of the llm model, which has a token limit.
+You can have multiple file stores. Simply provide the paths where you want the file_summaries to be and the location of the individual file store. All files stores must be in the `filebot-store-000` directory. Its highly recommened that you seperate file stores as the file summaries must fit into the context of the llm model, which has a token limit.
 
 ```
 [OPTIONS]
@@ -150,7 +150,7 @@ Here's a brief explanation of the role of each file/directory:
 
 **filebot.py**: This is the main script of the application. It uses functions from file_summary.py and find_info.py to generate file summaries and find relevant information based on user prompts.
 
-**filebot-store-00/**: This directory contains the files that the application will process and summarize.
+**filebot-store-000/**: This directory contains the files that the application will process and summarize.
 
 **file_summaries.json**: This file stores the summaries of each file processed by the application.
 
