@@ -12,7 +12,7 @@ This project can be highly useful for managing and retrieving information from l
 
 ## Important Usage Warning
 
-Please be aware that FileBot will make an API request to OpenAI for every file it processes and for each prompt message you send. This is necessary for FileBot to generate summaries of each file and to figure out the relevant files to answer your prompt. However, it also means that the usage of this application can quickly consume a significant number of API requests, especially if you are processing a large number of files or frequently updating files.
+Please be aware that FileBot will make an API request to OpenAI for every file it processes and for each prompt message you send. This is necessary for FileBot to generate summaries of each file and to figure out the relevant files to answer your prompt. It also means that the usage of this application can quickly consume a significant number of API requests, especially if you are processing a large number of files or frequently updating files. However, it only needs to summarize the files once or when the file is updated (filebot takes care of that automatically).
 
 OpenAI charges fees based on the number of API requests made, and there are also rate limits on how many requests can be made within a certain timeframe. Therefore, it's important to be mindful of your usage when running FileBot.
 
