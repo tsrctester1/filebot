@@ -103,7 +103,7 @@ Once you've started the Docker container, the application will ask you to enter 
 
 You can have multiple file stores. Simply provide the paths where you want the file_summaries to be and the location of the individual file store. All files stores must be in the `filebot-store-000` directory. Its highly recommened that you seperate file stores as the file summaries must fit into the context of the llm model, which has a token limit.
 
-Example of filebot.config option for `my-code-project` directory. `file_summaries` json file doesn't need to exist - it just specifies what it will be called when filebot creates it.
+Example of filebot.config option for `my-stuff` directory. `file_summaries` json file doesn't need to exist - it just specifies what it will be called when filebot creates it.
 
 ```
 [DEFAULT]
