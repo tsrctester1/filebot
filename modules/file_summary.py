@@ -24,7 +24,7 @@ def get_summary_instruction(config_path):
     return ""
 
 # Modify the summarize_file function
-def summarize_file(file_path, model_name="gpt-3.5-turbo", max_token_length=3000):
+async def summarize_file(file_path, model_name="gpt-3.5-turbo", max_token_length=3000):
     """Read a file and return a summary."""
     with open(file_path, 'r') as file:
         content = file.read()
@@ -35,7 +35,7 @@ def summarize_file(file_path, model_name="gpt-3.5-turbo", max_token_length=3000)
     if total_tokens <= max_token_length:
         prompt = f"{summary_instruction} Here is the document:\n\n{content}"
 
-        summary = generate_completion(prompt, model_name=model_name)
+        summary = await generate_completion(prompt, model_name=model_name)
         return [(file_path, summary)]
 
     # content exceeds max_token_length
@@ -45,13 +45,13 @@ def summarize_file(file_path, model_name="gpt-3.5-turbo", max_token_length=3000)
         chunk = content[i: i + max_token_length]
         prompt = f"{summary_instruction} Here is the document:\n\n{chunk}"
 
-        summary = generate_completion(prompt, model_name=model_name)
+        summary = await generate_completion(prompt, model_name=model_name)
         summaries.append((f"{file_path}.{i//max_token_length}", summary))
 
     return summaries
 
 # Modify the create_file_summaries function
-def create_file_summaries(directory, file_summaries_path, model_name="gpt-3.5-turbo"):
+async def create_file_summaries(directory, file_summaries_path, model_name="gpt-3.5-turbo"):
     ...
     ...
 
@@ -83,7 +83,7 @@ def create_file_summaries(directory, file_summaries_path, model_name="gpt-3.5-tu
             if all(not key.startswith(base_file_path) for key in file_summaries.keys()) or \
             any(file_summaries[key]['mtime'] < os.path.getmtime(file_path) for key in file_summaries.keys() if key.startswith(base_file_path)):
                 print(f"New or updated file detected: '{file_path}'")
-                summaries = summarize_file(file_path, model_name=model_name)
+                summaries = await summarize_file(file_path, model_name=model_name)
                 if summaries:
                     for path, summary in summaries:
                         file_summaries[path] = {
