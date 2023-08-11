@@ -89,7 +89,7 @@ docker run -it -v /path/to/filebot/:/app/ -u $(id -u):$(id -g) filebot
 Optionally, you may run gpt4. Please be aware that it many times more expensive in price per token than gpt-3.5-turbo.
 
 ```
-docker run -it -v /home/david/projects/filebot/:/app/ -u $(id -u):$(id -g) filebot python filebot.py --model gpt4
+docker run -it -v /path/to/filebot/:/app/ -u $(id -u):$(id -g) filebot python filebot.py --model gpt4
 ```
 Note that `python filebot.py` is now explicit in the command to override `CMD` in Dockerfile to allow for passing in the optional argument.
 
