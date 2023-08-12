@@ -6,6 +6,7 @@ import argparse
 from modules.file_summary import create_file_summaries
 from modules.find_info import find_relevant_info
 from modules.find_info import answer_prompt
+from modules.file_ranker import rank_files, get_file_answers
 
 # Answer user prompt
 async def answer_user_prompt(relevant_info):
@@ -33,6 +34,8 @@ def extract_file_paths(response):
 async def main_async():
     parser = argparse.ArgumentParser(description='Run filebot with the specified model.')
     parser.add_argument('--model', type=str, default="gpt-3.5-turbo", help='Which model to use: gpt4 or gpt-3.5-turbo (default is gpt-3.5-turbo)')
+    parser.add_argument('--num-files', type=int, default=3, help='Number of top files to consider (default is 3)')
+
     args = parser.parse_args()
     model_name = args.model
 
@@ -52,11 +55,17 @@ async def main_async():
         file_paths = extract_file_paths(response)
 
         if file_paths:
-            # Present all file paths to the user
-            print("\nFound the following relevant files:")
-            for index, file in enumerate(file_paths, start=1):
-                stripped_file_path = re.sub(r'\.\d+$', '', file)
-                print(f"{index}. {stripped_file_path}")
+
+            # Rank and get top files as per user's choice
+            top_files = await rank_files(file_paths, args.num_files)
+
+            # Asynchronously get answers for the top 3 files
+            answers = await get_file_answers(top_files, user_prompt, answer_prompt)
+
+            # Display the results
+            print("\nTop answers from relevant files:")
+            for index, (file, answer) in enumerate(answers, start=1):
+                print(f"{index}. {answer}\nsource: {file}\n\n")
             print("")
 
             while True:
