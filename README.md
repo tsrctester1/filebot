@@ -1,5 +1,9 @@
 # FileBot
 
+I'd use Khoj if you haven't heard of it. Check it out. It's better all around user experience and has less rough edges, not to mention a proper GUI! It will yield about the same results for you, and Khoj can probably handle more files than FileBot right now.
+
+If you're still interested, checkout FileBot. It's just a personal tool I use that a few other I know are using. It outperforms Khoj on certain queries and can give you a direct source link it based its answer from, but it's probably only a matter of time before Khoj implements that or improves on some dimensions.
+
 ## About
 
 FileBot is a Python-based project designed to be a stand-alone utility or a service to other bots or tools to help answer user prompts based on the content of specified files. It works by summarizing the contents of files, identifying relevant files based on a user prompt, and then returning a response with the paths of the relevant files.
@@ -175,7 +179,7 @@ Here's a brief explanation of the role of each file/directory:
 - [x] Optional OpenAI GPT-4 API.
 - [ ] Add keywords field to file_summaries.json
 - [ ] Implement file anonymization strategies when sending data to OpenAI or similar platforms.
-- [ ] Answer prompt based on up to 3 top ranked documents.
+- [ x ] Answer prompt based on up to 3 top ranked documents.
 - [ ] Drop in any small LLM or OpenAI API compatible service.
 - [ ] Support pdf files.
 - [ ] Support a variety of other common file types.
