@@ -179,7 +179,7 @@ Here's a brief explanation of the role of each file/directory:
 - [x] Optional OpenAI GPT-4 API.
 - [ ] Add keywords field to file_summaries.json
 - [ ] Implement file anonymization strategies when sending data to OpenAI or similar platforms.
-- [ x ] Answer prompt based on up to 3 top ranked documents.
+- [x] Answer prompt based on up to 3 top ranked documents.
 - [ ] Drop in any small LLM or OpenAI API compatible service.
 - [ ] Support pdf files.
 - [ ] Support a variety of other common file types.
