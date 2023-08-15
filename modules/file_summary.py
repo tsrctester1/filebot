@@ -24,7 +24,7 @@ def get_summary_instruction(config_path):
     return ""
 
 # Modify the summarize_file function
-async def summarize_file(file_path, model_name="gpt-3.5-turbo", max_token_length=3000):
+async def summarize_file(file_path, model_name="gpt-3.5-turbo", max_token_length=9000):
     """Read a file and return a summary."""
     with open(file_path, 'r') as file:
         content = file.read()

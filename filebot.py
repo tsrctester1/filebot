@@ -33,7 +33,7 @@ def extract_file_paths(response):
 
 async def main_async():
     parser = argparse.ArgumentParser(description='Run filebot with the specified model.')
-    parser.add_argument('--model', type=str, default="gpt-3.5-turbo", help='Which model to use: gpt4 or gpt-3.5-turbo (default is gpt-3.5-turbo)')
+    parser.add_argument('--model', type=str, default="gpt-3.5-turbo", help='Which model to use: gpt-3.5-turbo or gpt-3.5-turbo (default is gpt-3.5-turbo)')
     parser.add_argument('--num-files', type=int, default=3, help='Number of top files to consider (default is 3)')
 
     args = parser.parse_args()
